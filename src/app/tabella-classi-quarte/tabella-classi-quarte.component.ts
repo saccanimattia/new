@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PrendiDatiService } from '../servizi/prendi-dati.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tabella-classi-quarte',
@@ -10,13 +11,15 @@ export class TabellaClassiQuarteComponent {
   studenti: any[] = [];
   classiQuarte: any
   alunni: any;
+  isProfile: any;
 
-  constructor(private prendi: PrendiDatiService) {
+  constructor(private prendi: PrendiDatiService, private route : ActivatedRoute) {
 
   }
 
   ngOnInit(): void{
     this.prendiClassi()
+    this.route.snapshot.paramMap.get('id')
   }
 
   async prendiClassi(): Promise<void> {

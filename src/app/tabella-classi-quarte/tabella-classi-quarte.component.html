@@ -4,14 +4,16 @@
           <th>Numero</th>
           <th>Classe</th>
       </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let classe of classiQuarte; let i = index" (click)="visualizza(classe)">
-          <td>{{ i + 1 }}</td>
-          <td>{{ classe.name }}</td>
-      </tr>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+        <tr *ngFor="let classe of classiQuarte; let i = index" (click)="visualizza(classe)">
+            <td>{{ i + 1 }}</td>
+            <td>{{ classe.name }}</td>
+        </tr>
+    </tbody>
+  </table>
+
+
 
 
 
