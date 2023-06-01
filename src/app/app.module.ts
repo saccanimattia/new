@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TabellaClassiQuarteComponent } from './tabella-classi-quarte/tabella-classi-quarte.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TabellaClassiQuarteComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
