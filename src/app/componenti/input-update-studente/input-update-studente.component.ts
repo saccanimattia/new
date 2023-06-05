@@ -20,7 +20,7 @@ export class InputUpdateStudenteComponent {
   constructor(private servizio:PrendiDatiService){}
 
   inserisci(){
-    this.studenteB.classe = this.servizio.classeToId(this.studenteB.classe).id
-    this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname).id)
+    this.studenteB.classe = this.servizio.classeToId(this.studenteB.classe)
+    this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname))
   }
 }

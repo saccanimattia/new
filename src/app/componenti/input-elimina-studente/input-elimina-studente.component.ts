@@ -17,6 +17,6 @@ export class InputEliminaStudenteComponent {
   constructor(private servizio:PrendiDatiService){}
 
   elimina(){
-    this.servizio.eliminaStudente(this.servizio.eliminaStudente(this.servizio.studenteToId(this.studente.name, this.studente.surname).id))
+    this.servizio.eliminaStudente(this.servizio.studenteToId(this.studente.name, this.studente.surname))
   }
 }

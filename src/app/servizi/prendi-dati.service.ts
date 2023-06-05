@@ -75,14 +75,14 @@ export class PrendiDatiService {
       studente.name === nome &&
       studente.surname === cognome
     );
-    return studenteTrovato
+    return studenteTrovato.id
   }
 
   classeToId(nome: any){
     const classeTrovata = this.classi.items.find((classe:any) =>
       classe.name === nome
     );
-    return classeTrovata
+    return classeTrovata.id
   }
 
 
