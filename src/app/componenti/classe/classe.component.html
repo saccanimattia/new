@@ -1,7 +1,12 @@
-<h4>Alunni</h4>
+<div *ngIf="studentiClasse.length!=0 else noStudenti">
+  <h4>Alunni</h4>
   <ul>
       <li *ngFor="let alunno of studentiClasse">
         {{ alunno.name }}  {{alunno.surname}}
       </li>
   </ul>
+</div>
+<ng-template #noStudenti>
+  <p>in questa classe non sono presenti studenti</p>
+</ng-template>
 

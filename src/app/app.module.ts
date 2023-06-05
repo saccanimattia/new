@@ -19,7 +19,7 @@ import { InputUpdateStudenteComponent } from './componenti/input-update-studente
     InputNuovoStudenteComponent,
     InputEliminaStudenteComponent,
     InputCreaClasseComponent,
-    InputUpdateStudenteComponent,
+    InputUpdateStudenteComponent
   ],
   imports: [
     BrowserModule,

@@ -7,12 +7,12 @@ import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
   styleUrls: ['./input-update-studente.component.scss']
 })
 export class InputUpdateStudenteComponent {
-  id: any
+  id= "id studente da modificare"
   studente:any = {
     name: 'nome',
     surname: "cognome",
-    birthDate: "2023-06-01 12:10:57.315Z",
-    classe: "uvsvmfq4ty8240k"
+    birthDate: "data nascita",
+    classe: "id della classe"
   };
 
   constructor(private servizio:PrendiDatiService){}

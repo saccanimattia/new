@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TabellaClassiQuarteComponent {
   classiQuarte: any[] = [];
   classeSelezionata: any
+  isClasse: any
 
   constructor(private prendi: PrendiDatiService, private route : ActivatedRoute) {
 
@@ -30,7 +31,7 @@ export class TabellaClassiQuarteComponent {
   }
 
   visualizza(classe: any, ind: any){
-
+    this.isClasse = true
     this.classeSelezionata = classe.id;
   }
 }

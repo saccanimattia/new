@@ -8,7 +8,7 @@ import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
 })
 export class InputCreaClasseComponent {
   classe:any = {
-    name: 'nomeClasse'
+    name: 'nome della classe'
   };
 
   constructor(private servizio:PrendiDatiService){}

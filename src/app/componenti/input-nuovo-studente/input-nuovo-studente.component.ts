@@ -11,8 +11,8 @@ export class InputNuovoStudenteComponent {
   studente:any = {
     name: 'nome',
     surname: "cognome",
-    birthDate: "2023-06-01 12:10:57.315Z",
-    classe: "uvsvmfq4ty8240k"
+    birthDate: "data nascita",
+    classe: "id della classe"
   };
 
   constructor(private servizio:PrendiDatiService){}

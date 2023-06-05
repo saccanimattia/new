@@ -8,7 +8,7 @@ import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
   styleUrls: ['./input-elimina-studente.component.scss']
 })
 export class InputEliminaStudenteComponent {
-  id: any
+  id = "id"
 
 
   constructor(private servizio:PrendiDatiService){}
