@@ -3,6 +3,7 @@
 
 <input [(ngModel)]="studenteA.name"><br>
 <input [(ngModel)]="studenteA.surname"><br>
+<input [(ngModel)]="studenteA.classe"><br>
 
 <p>studente modificato</p>
 
@@ -11,4 +12,4 @@
 <input [(ngModel)]="studenteB.classe"><br>
 
 
-<button id="UPDATE STUDENTE" type="button" (click)="inserisci()" style="height:20px; width:20px; margin-top: 10px;">
+<button mat-raised-button color="primary" (click)="inserisci()" style="background-color:antiquewhite; width:100px; height: 30px;">UPDATE STUDENTE</button>

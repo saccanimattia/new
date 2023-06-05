@@ -11,12 +11,13 @@ export class InputEliminaStudenteComponent {
   studente:any = {
     name: 'nome',
     surname: 'cognome',
+    classe: 'classe',
   };
 
 
   constructor(private servizio:PrendiDatiService){}
 
   elimina(){
-    this.servizio.eliminaStudente(this.servizio.studenteToId(this.studente.name, this.studente.surname))
+    this.servizio.eliminaStudente(this.servizio.studenteToId(this.studente.name, this.studente.surname, this.studente.classe))
   }
 }

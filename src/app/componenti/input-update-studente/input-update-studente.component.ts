@@ -10,6 +10,7 @@ export class InputUpdateStudenteComponent {
   studenteA:any = {
     name: 'nome',
     surname: 'cognome',
+    classe: 'classe',
   };
   studenteB:any = {
     name: 'nome',
@@ -21,6 +22,6 @@ export class InputUpdateStudenteComponent {
 
   inserisci(){
     this.studenteB.classe = this.servizio.classeToId(this.studenteB.classe)
-    this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname))
+    this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname, this.servizio.classeToId(this.studenteA.classe)))
   }
 }

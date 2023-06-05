@@ -70,10 +70,11 @@ export class PrendiDatiService {
     }
   }
 
-  studenteToId(nome: any, cognome: any){
+  studenteToId(nome: any, cognome: any, classeS: any){
     const studenteTrovato = this.studenti.items.find((studente:any) =>
       studente.name === nome &&
-      studente.surname === cognome
+      studente.surname === cognome &&
+      studente.classe === classeS
     );
     return studenteTrovato.id
   }
