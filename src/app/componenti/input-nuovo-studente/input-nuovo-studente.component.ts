@@ -11,13 +11,13 @@ export class InputNuovoStudenteComponent {
   studente:any = {
     name: 'nome',
     surname: "cognome",
-    birthDate: "data nascita",
-    classe: "id della classe"
+    classe: "classe"
   };
 
   constructor(private servizio:PrendiDatiService){}
 
   inserisci(){
+    this.studente.classe = this.servizio.classeToId(this.studente.classe).id
     this.servizio.creaNuovoStudente(this.studente)
   }
 }

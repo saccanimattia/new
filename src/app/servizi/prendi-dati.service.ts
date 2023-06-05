@@ -6,7 +6,7 @@ import PocketBase from 'pocketbase';
 })
 export class PrendiDatiService {
   pb: any;
-  classi: any[] = [];
+  classi: any;
   studenti: any;
 
   constructor() {
@@ -14,8 +14,7 @@ export class PrendiDatiService {
   }
 
   async prendiStudenti() {
-      this.pb.collection('Students').getList(1, 50)
-        .then((result: any) => {
+      this.pb.collection('Students').getList(1, 50).then((result: any) => {
         this.studenti = result;
       })
       .catch((err: any) => {
@@ -28,7 +27,6 @@ export class PrendiDatiService {
     try {
       const result = await this.pb.collection('Classes').getList(1, 50);
       this.classi = result;
-      console.log(this.classi);
       return this.classi;
     } catch (err) {
       console.log("Si è verificato un errore:", err);
@@ -71,4 +69,21 @@ export class PrendiDatiService {
       return []; // Restituisci un array vuoto in caso di errore
     }
   }
+
+  studenteToId(nome: any, cognome: any){
+    const studenteTrovato = this.studenti.items.find((studente:any) =>
+      studente.name === nome &&
+      studente.surname === cognome
+    );
+    return studenteTrovato
+  }
+
+  classeToId(nome: any){
+    const classeTrovata = this.classi.items.find((classe:any) =>
+      classe.name === nome
+    );
+    return classeTrovata
+  }
+
+
 }

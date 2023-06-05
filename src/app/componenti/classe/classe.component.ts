@@ -19,7 +19,6 @@ export class ClasseComponent implements OnChanges{
   async prendiStudenti(): Promise<void> {
     try {
       let a:any = await this.prendi.prendiStudenti()
-      console.log(a)
       this.studentiClasse = a.items.filter((studente: any) => studente.classe === this.classeS);
       console.log(this.studentiClasse)
     } catch (err) {

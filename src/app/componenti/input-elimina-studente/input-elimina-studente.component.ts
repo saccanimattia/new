@@ -8,12 +8,15 @@ import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
   styleUrls: ['./input-elimina-studente.component.scss']
 })
 export class InputEliminaStudenteComponent {
-  id = "id"
+  studente:any = {
+    name: 'nome',
+    surname: 'cognome',
+  };
 
 
   constructor(private servizio:PrendiDatiService){}
 
   elimina(){
-    this.servizio.eliminaStudente(this.id)
+    this.servizio.eliminaStudente(this.servizio.eliminaStudente(this.servizio.studenteToId(this.studente.name, this.studente.surname).id))
   }
 }
