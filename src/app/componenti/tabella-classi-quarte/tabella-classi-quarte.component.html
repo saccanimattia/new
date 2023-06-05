@@ -1,0 +1,19 @@
+<table>
+  <thead>
+      <tr>
+          <th>Numero</th>
+          <th>Classe</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let classe of classiQuarte; let i = index" (click)="visualizza(classe, i)">
+            <td>{{ i + 1 }}</td>
+            <td>{{ classe.name }}</td>
+        </tr>
+    </tbody>
+  </table>
+<app-classe [classeS]="classeSelezionata" ></app-classe>
+<app-input-crea-classe></app-input-crea-classe>
+<app-input-nuovo-studente></app-input-nuovo-studente>
+<app-input-elimina-studente></app-input-elimina-studente>
+<app-input-update-studente></app-input-update-studente>
