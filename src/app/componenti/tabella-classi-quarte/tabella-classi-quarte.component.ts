@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PrendiDatiService } from '../../servizi/prendi-dati.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-tabella-classi-quarte',
@@ -12,7 +13,7 @@ export class TabellaClassiQuarteComponent {
   classeSelezionata: any
   isClasse: any
 
-  constructor(private prendi: PrendiDatiService, private route : ActivatedRoute) {
+  constructor(private prendi: PrendiDatiService, private router : Router) {
 
   }
 
@@ -30,10 +31,16 @@ export class TabellaClassiQuarteComponent {
     }
   }
 
-  visualizza(classe: any, ind: any){
-    this.isClasse = true
-    this.classeSelezionata = classe.id;
+  visualizza(classe: any, index: number) {
+    const classeId = index + 1;
+    this.router.navigate(['/classe', classeId]);
   }
+
+  ordinaClassi(){
+    this.classiQuarte = this.prendi.ordinaClassi();
+    }
+
+
 }
 
 
