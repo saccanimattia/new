@@ -1,0 +1,19 @@
+.studenti-container {
+  margin-top: 20px;
+}
+
+/* Stili per l'elenco degli alunni */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* Stili per il messaggio quando non ci sono studenti */
+.no-studenti {
+  color: red;
+  font-style: italic;
+}

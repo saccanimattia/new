@@ -1,5 +1,21 @@
-table{
-  text-align: center;
-  padding-bottom:20px;
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+
+.selected-classe {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
