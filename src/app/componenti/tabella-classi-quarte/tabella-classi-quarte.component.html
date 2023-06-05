@@ -11,8 +11,10 @@
   </table>
 <div *ngIf="isClasse">
   <app-classe [classeS]="classeSelezionata" ></app-classe>
-  <app-input-crea-classe></app-input-crea-classe>
-  <app-input-nuovo-studente></app-input-nuovo-studente>
-  <app-input-elimina-studente></app-input-elimina-studente>
-  <app-input-update-studente></app-input-update-studente>
 </div>
+<a routerLink="creaclasse">crea classe</a>
+<a routerLink="creastudente">crea studente</a>
+<a routerLink="modificastudente">modifica studente</a>
+<a routerLink="eliminastudente">elimina studente</a>
+
+<router-outlet></router-outlet>
