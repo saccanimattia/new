@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
+import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { TabellaClassiQuarteComponent } from './componenti/tabella-classi-quarte/tabella-classi-quarte.component';
 import { ClasseComponent } from './componenti/classe/classe.component';
@@ -25,7 +26,8 @@ import { InputUpdateStudenteComponent } from './componenti/input-update-studente
     BrowserModule,
     AppRoutingModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
