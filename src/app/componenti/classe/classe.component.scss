@@ -2,18 +2,25 @@
   margin-top: 20px;
 }
 
-/* Stili per l'elenco degli alunni */
-ul {
-  list-style-type: none;
-  padding: 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
 }
 
-li {
-  margin-bottom: 5px;
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Stili per il messaggio quando non ci sono studenti */
+th {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
 .no-studenti {
   color: red;
   font-style: italic;
+  margin-top: 10px;
 }
