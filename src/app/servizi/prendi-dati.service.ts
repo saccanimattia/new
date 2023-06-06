@@ -9,6 +9,7 @@ export class PrendiDatiService {
   classi: any;
   studenti: any;
 
+
   constructor() {
     this.pb = new PocketBase('http://127.0.0.1:8090');
   }
@@ -89,6 +90,7 @@ export class PrendiDatiService {
     );
     return classeTrovata.id
   }
+
 
   idToClass(id: any){
     const classeTrovata = this.classi.items.find((classe:any) =>

@@ -7,7 +7,7 @@ import { PrendiDatiService } from './servizi/prendi-dati.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title="any"
+  title="Gestione di classi e alunni"
 
 
 
