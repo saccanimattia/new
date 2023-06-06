@@ -73,6 +73,7 @@ export class PrendiDatiService {
   }
 
   studenteToId(nome: any, cognome: any, classeS: any){
+
     const studenteTrovato = this.studenti.find((studente:any) =>
       studente.name === nome &&
       studente.surname === cognome &&
@@ -89,12 +90,21 @@ export class PrendiDatiService {
     return classeTrovata.id
   }
 
+  idToClass(id: any){
+    const classeTrovata = this.classi.items.find((classe:any) =>
+      classe.id === id
+    );
+    return classeTrovata.name
+  }
+
   ordinaClassi() {
+    this.prendiClassi()
     this.classi.items.sort((a:any, b:any) => a.name.localeCompare(b.name));
     return this.classi.items
   }
 
   prendiClassidaFiglio(){
+    this.prendiClassi()
     return this.classi
   }
 

@@ -3,13 +3,22 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th colspan="4">
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control"  [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+            </div>
+          </form>
+        </th>
+      </tr>
+      <tr>
         <th>Nome</th>
         <th>Cognome</th>
         <th>Data di nascita</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let alunno of studentiClasse">
+      <tr *ngFor="let alunno of filteredArray">
         <td>{{ alunno.name }}</td>
         <td>{{ alunno.surname }}</td>
         <td>{{ alunno.birthDate }}</td>

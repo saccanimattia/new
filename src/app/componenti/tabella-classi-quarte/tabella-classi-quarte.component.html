@@ -1,8 +1,16 @@
-<h1>BLAISE PASCAL</h1>
+<h1>TUTTE LE CLASSI</h1>
+
+<div class="search-form">
+  <form class="form-inline">
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+    </div>
+  </form>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Numero</th>
       <th scope="col">
         Classe
         <span>
@@ -15,8 +23,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let classe of classiQuarte; let i = index" (click)="visualizza(classe, i)">
-      <th scope="row">{{ i + 1 }}</th>
+    <tr *ngFor="let classe of filteredArray; let i = index" (click)="visualizza(classe, i)">
       <td>{{ classe.name }}</td>
     </tr>
   </tbody>

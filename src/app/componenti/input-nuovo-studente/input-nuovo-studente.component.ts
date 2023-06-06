@@ -20,6 +20,11 @@ export class InputNuovoStudenteComponent{
 
   constructor(private servizio:PrendiDatiService){}
 
+  ngOnInit(){
+    if(this.classeFrequentata == null)
+      this.studente.classe = ''
+  }
+
 
   openModal() {
     this.prendiStudenti()
@@ -38,7 +43,10 @@ export class InputNuovoStudenteComponent{
 
   saveClass() {
     if (this.selectedOption === 'new') {
-      this.studente.classe = this.servizio.classeToId(this.classeFrequentata)
+      if(this.studente.classe != ''){
+        this.studente.classe = this.servizio.classeToId(this.classeFrequentata)
+      }
+      this.studente.birthDate = new Date(this.studente.birthDate)
       this.servizio.creaNuovoStudente(this.studente)
     } else if (this.selectedOption === 'existing') {
       for (let item of this.items) {
@@ -62,9 +70,11 @@ export class InputNuovoStudenteComponent{
 
 modifica(){
   for(let stud of this.selectedStudents){
-    console.log(stud)
+    stud.birthDate = new Date(stud.birthDate)
     let s = this.servizio.studenteToId(stud.name, stud.surname, '')
-    stud.classe = this.servizio.classeToId(this.classeFrequentata)
+    if(this.studente.classe != ''){
+      this.studente.classe = this.servizio.classeToId(this.classeFrequentata)
+    }
 
     this.servizio.updateStudente(stud, s)
   }

@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { InputEliminaStudenteComponent } from './componenti/input-elimina-studente/input-elimina-studente.component';
 import { InputCreaClasseComponent } from './componenti/input-crea-classe/input-crea-classe.component';
 import { InputUpdateStudenteComponent } from './componenti/input-update-studente/input-update-studente.component';
+import { AllStudentiComponent } from './componenti/all-studenti/all-studenti.component';
+import { NavbarComponent } from './componenti/navbar/navbar.component';
+
 
 
 @NgModule({
@@ -21,7 +24,9 @@ import { InputUpdateStudenteComponent } from './componenti/input-update-studente
     InputNuovoStudenteComponent,
     InputEliminaStudenteComponent,
     InputCreaClasseComponent,
-    InputUpdateStudenteComponent
+    InputUpdateStudenteComponent,
+    AllStudentiComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

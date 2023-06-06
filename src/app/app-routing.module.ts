@@ -6,9 +6,13 @@ import { InputUpdateStudenteComponent } from './componenti/input-update-studente
 import { InputEliminaStudenteComponent } from './componenti/input-elimina-studente/input-elimina-studente.component';
 import { ClasseComponent } from './componenti/classe/classe.component';
 import { TabellaClassiQuarteComponent } from './componenti/tabella-classi-quarte/tabella-classi-quarte.component';
+import { AppComponent } from './app.component';
+import { AllStudentiComponent } from './componenti/all-studenti/all-studenti.component';
+import { NavbarComponent } from './componenti/navbar/navbar.component';
 
 const routes: Routes = [
-  {path:"", component:TabellaClassiQuarteComponent},
+  {path:"classi", component:TabellaClassiQuarteComponent},
+  {path:"studenti", component:AllStudentiComponent},
   {path:"creaclasse", component:InputCreaClasseComponent},
   {path:"creastudente", component:InputNuovoStudenteComponent},
   {path:"modificastudente", component:InputUpdateStudenteComponent},

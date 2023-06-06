@@ -36,9 +36,18 @@ export class ClasseComponent{
   async prendiStudenti(): Promise<void> {
       let a:any = await this.prendi.prendiStudenti()
       this.studentiClasse = a.filter((studente: any) => studente.classe === this.classeS);
-      console.log(this.studentiClasse)
+      this.filteredArray = this.studentiClasse
   }
 
+  searchQuery: string = '';
+  filteredArray: any[] = [];
 
+  performSearch(): void {
+    this.filteredArray = this.studentiClasse
+    this.filteredArray = this.studentiClasse.filter(item => {
+      return item.name.toLowerCase().includes(this.searchQuery.toLowerCase()) || item.surname.toLowerCase().includes(this.searchQuery.toLowerCase()) || item.birthDate.toLowerCase().includes(this.searchQuery.toLowerCase())
+    });
+    console.log(this.filteredArray)
+  }
 
 }

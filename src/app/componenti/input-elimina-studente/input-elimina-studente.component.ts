@@ -37,6 +37,7 @@ export class InputEliminaStudenteComponent {
 
   elimina() {
     this.studente.classe = this.servizio.classeToId(this.classeFrequentata)
+    this.studente.birthDate = new Date(this.studente.birthDate)
     this.servizio.eliminaStudente(this.servizio.studenteToId(this.studente.name, this.studente.surname, this.studente.classe))
   }
 }

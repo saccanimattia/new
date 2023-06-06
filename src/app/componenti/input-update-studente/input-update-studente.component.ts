@@ -11,12 +11,14 @@ export class InputUpdateStudenteComponent {
     name: 'nome',
     surname: 'cognome',
     classe: 'classe',
+    birthDate: 'data di nascita'
   };
 
   studenteB:any = {
     name: 'nome',
     surname: 'cognome',
     classe: 'classe',
+    birthDate: 'data di nascita'
   };
 
   @Input() classeFrequentata: any
@@ -40,6 +42,8 @@ export class InputUpdateStudenteComponent {
   }
 
   aggiorna(){
+    this.studenteA.birthDate = new Date(this.studenteA.birthDate)
+    this.studenteB.birthDate = new Date(this.studenteB.birthDate)
     this.studenteB.classe = this.servizio.classeToId(this.studenteB.classe)
     this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname, this.servizio.classeToId(this.classeFrequentata)))
   }

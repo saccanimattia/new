@@ -1,0 +1,22 @@
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-link {
+  color: #333;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 10px;
+  transition: color 0.3s;
+  border-radius: 5px;
+}
+
+.menu-link:hover {
+  color: #007bff;
+  background-color: #e9ecef;
+}

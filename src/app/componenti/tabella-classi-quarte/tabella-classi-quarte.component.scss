@@ -1,34 +1,46 @@
-.table {
-  width: 80%;
-  border-collapse: collapse;
-  margin:auto;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-.float-end {
-  float: right;
-}
-
-tfoot td {
-  padding: 0;
-}
-
-
-
-
 h1 {
   font-size: 24px;
   font-weight: bold;
   color: darkorange;
   text-align: center;
   margin-top: 20px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  .form-group {
+    margin-right: 10px;
+  }
+
+  .form-control {
+    width: 200px;
+    border-radius: 4px;
+  }
+}
+
+.table {
+  width: 80%;
+  margin: auto;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tfoot td {
+    padding: 0;
+  }
+}
+
+.float-end {
+  float: right;
 }

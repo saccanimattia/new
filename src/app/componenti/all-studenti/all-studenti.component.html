@@ -1,0 +1,36 @@
+<div *ngIf="studentiClasse.length !== 0; else noStudenti" class="studenti-container">
+  <h1>TUTTI GLI STUDENTI</h1>
+
+  <div class="search-form">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+      </div>
+    </form>
+  </div>
+
+
+  <table class="table table-striped custom-table">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Cognome</th>
+        <th scope="col">Data di nascita</th>
+        <th scope="col">Classe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alunno of filteredArray">
+        <td>{{ alunno.name }}</td>
+        <td>{{ alunno.surname }}</td>
+        <td>{{ alunno.birthDate }}</td>
+        <td>{{ alunno.classe }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noStudenti>
+  <p class="no-studenti">In questa classe non sono presenti studenti.</p>
+</ng-template>
+
