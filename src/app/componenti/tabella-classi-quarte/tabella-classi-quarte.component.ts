@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PrendiDatiService } from '../../servizi/prendi-dati.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
+declare var window : any
 
 @Component({
   selector: 'app-tabella-classi-quarte',
   templateUrl: './tabella-classi-quarte.component.html',
   styleUrls: ['./tabella-classi-quarte.component.scss']
 })
-export class TabellaClassiQuarteComponent {
+export class TabellaClassiQuarteComponent implements OnInit{
   classiQuarte: any[] = [];
   classeSelezionata: any
   isClasse: any
+  formModal:any
 
   constructor(private prendi: PrendiDatiService, private router : Router) {
 

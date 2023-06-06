@@ -1,5 +1,27 @@
-<p>crea classe</p>
+<div class="circle-button">
+  <button type="button" class="btn btn-primary" (click)="openModal()">
+    <i [class]="plusIconClass"></i>
+  </button>
+</div>
 
-<input  [(ngModel)]="classe.name"><br>
-
-<button mat-raised-button color="primary" (click)="creaClasse()" style="background-color:antiquewhite; width:100px; height: 30px;">CREA CLASSE</button>
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Crea Nuova Classe</h2>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="className">Nome Classe</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="classe.name" >
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
+        <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
+      </div>
+    </div>
+  </div>
+</div>

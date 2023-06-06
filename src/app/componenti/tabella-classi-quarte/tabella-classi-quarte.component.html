@@ -1,20 +1,30 @@
-<table>
-      <tr>
-          <th>Numero</th>
-          <th>Classe</th>
-      </tr>
-      <tr *ngFor="let classe of classiQuarte; let i = index" (click)="visualizza(classe, i)">
-            <td>{{ i + 1 }}</td>
-            <td>{{ classe.name }}</td>
-        </tr>
+<h1>BLAISE PASCAL</h1>
 
-  </table>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Numero</th>
+      <th scope="col">
+        Classe
+        <span class="float-end">
+          <i class="bi bi-sort-alpha-down" (click)="ordinaClassi()"></i>
+        </span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let classe of classiQuarte; let i = index" (click)="visualizza(classe, i)">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ classe.name }}</td>
+    </tr>
+  </tbody>
+</table>
+
 <div *ngIf="isClasse">
-  <app-classe [classeS]="classeSelezionata" ></app-classe>
+  <app-classe [classeS]="classeSelezionata"></app-classe>
 </div>
-<a routerLink="creaclasse">crea classe</a>
-<a routerLink="creastudente">crea studente</a>
-<a routerLink="modificastudente">modifica studente</a>
-<a routerLink="eliminastudente">elimina studente</a>
 
-<router-outlet></router-outlet>
+<app-input-crea-classe></app-input-crea-classe>
+
+
+

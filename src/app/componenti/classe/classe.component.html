@@ -1,16 +1,20 @@
 <div *ngIf="studentiClasse.length !== 0; else noStudenti" class="studenti-container">
-  <h4>Alunni</h4>
-  <table>
-    <tr>
-      <th>Nome</th>
-      <th>Cognome</th>
-      <th>Data di nascita</th>
-    </tr>
-    <tr *ngFor="let alunno of studentiClasse">
-      <td>{{ alunno.name }}</td>
-      <td>{{ alunno.surname }}</td>
-      <td>{{ alunno.birthDate }}</td>
-    </tr>
+  <h1>classe = {{classe.name}}</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Data di nascita</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alunno of studentiClasse">
+        <td>{{ alunno.name }}</td>
+        <td>{{ alunno.surname }}</td>
+        <td>{{ alunno.dateBirth }}</td>
+      </tr>
+    </tbody>
   </table>
 </div>
 

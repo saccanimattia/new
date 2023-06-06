@@ -13,14 +13,16 @@ export class PrendiDatiService {
     this.pb = new PocketBase('http://127.0.0.1:8090');
   }
 
-  async prendiStudenti() {
-      this.pb.collection('Students').getList(1, 50).then((result: any) => {
-        this.studenti = result;
-      })
-      .catch((err: any) => {
-        console.log("Something went wrong:", err);
-      });
-      return this.studenti
+  async prendiStudenti(): Promise<void> {
+  try {
+    const result = await this.pb.collection('Students').getList(1, 50);
+    this.studenti = result.items;
+    console.log("this.studenti");
+    console.log(this.studenti);
+  } catch (err) {
+    console.log("Si è verificato un errore:", err);
+  }
+    return this.studenti;
   }
 
   async prendiClassi(): Promise<any[]> {
@@ -84,6 +86,15 @@ export class PrendiDatiService {
       classe.name === nome
     );
     return classeTrovata.id
+  }
+
+  ordinaClassi() {
+    this.classi.items.sort((a:any, b:any) => a.name.localeCompare(b.name));
+    return this.classi.items
+  }
+
+  prendiClassidaFiglio(){
+    return this.classi
   }
 
 

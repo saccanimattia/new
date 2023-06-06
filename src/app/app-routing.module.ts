@@ -4,12 +4,16 @@ import { InputCreaClasseComponent } from './componenti/input-crea-classe/input-c
 import { InputNuovoStudenteComponent } from './componenti/input-nuovo-studente/input-nuovo-studente.component';
 import { InputUpdateStudenteComponent } from './componenti/input-update-studente/input-update-studente.component';
 import { InputEliminaStudenteComponent } from './componenti/input-elimina-studente/input-elimina-studente.component';
+import { ClasseComponent } from './componenti/classe/classe.component';
+import { TabellaClassiQuarteComponent } from './componenti/tabella-classi-quarte/tabella-classi-quarte.component';
 
 const routes: Routes = [
+  {path:"", component:TabellaClassiQuarteComponent},
   {path:"creaclasse", component:InputCreaClasseComponent},
   {path:"creastudente", component:InputNuovoStudenteComponent},
   {path:"modificastudente", component:InputUpdateStudenteComponent},
   {path:"eliminastudente", component:InputEliminaStudenteComponent},
+  {path: 'classe/:id', component: ClasseComponent }
 ];
 
 @NgModule({
