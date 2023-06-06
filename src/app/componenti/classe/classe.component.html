@@ -1,16 +1,17 @@
 <div *ngIf="studentiClasse.length !== 0; else noStudenti" class="studenti-container">
   <h1>{{classe.name}}</h1>
+
+  <div class="search-form">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control"  [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+      </div>
+    </form>
+  </div>
+
+
   <table class="table table-striped">
     <thead>
-      <tr>
-        <th colspan="4">
-          <form class="form-inline">
-            <div class="form-group">
-              <input type="text" class="form-control"  [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
-            </div>
-          </form>
-        </th>
-      </tr>
       <tr>
         <th>Nome</th>
         <th>Cognome</th>
