@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
 
 @Component({
@@ -12,16 +12,35 @@ export class InputUpdateStudenteComponent {
     surname: 'cognome',
     classe: 'classe',
   };
+
   studenteB:any = {
     name: 'nome',
-    surname: "cognome",
-    classe: "classe"
+    surname: 'cognome',
+    classe: 'classe',
   };
 
-  constructor(private servizio:PrendiDatiService){}
+  @Input() classeFrequentata: any
+  constructor(private servizio: PrendiDatiService) {}
 
-  inserisci(){
+  openModalee() {
+    const modal = document.querySelector('.modalUpdate');
+    modal?.classList.add('show');
+    modal?.setAttribute('style', 'display: block');
+  }
+
+  closeModalee() {
+    const modal = document.querySelector('.modalUpdate');
+    modal?.classList.remove('show');
+    modal?.setAttribute('style', 'display: none');
+  }
+
+  saveClass() {
+    this.aggiorna();
+    this.closeModalee();
+  }
+
+  aggiorna(){
     this.studenteB.classe = this.servizio.classeToId(this.studenteB.classe)
-    this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname, this.servizio.classeToId(this.studenteA.classe)))
+    this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname, this.servizio.classeToId(this.classeFrequentata)))
   }
 }

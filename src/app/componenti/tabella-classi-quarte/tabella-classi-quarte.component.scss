@@ -1,6 +1,7 @@
-table {
-  width: 100%;
+.table {
+  width: 80%;
   border-collapse: collapse;
+  margin:auto;
 }
 
 th, td {
@@ -13,29 +14,21 @@ th {
   background-color: #f2f2f2;
 }
 
-
-.selected-classe {
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  padding: 20px;
+.float-end {
+  float: right;
 }
 
-a {
-  display: inline-block;
-  margin-right: 10px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  text-decoration: none;
-  padding: 5px 10px;
-  background-color: #f2f2f2;
-  border-radius: 3px;
+tfoot td {
+  padding: 0;
 }
 
-a:hover {
-  background-color: #ddd;
-}
 
-/* Stili per l'elemento router-outlet */
-router-outlet {
+
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
   margin-top: 20px;
 }

@@ -1,7 +1,31 @@
-<p>elimina studente</p>
+<div class="circle-button">
+  <button type="button" class="btn btn-primary"(click)="openModale()">
+    <i class="bi bi-dash-circle"></i>
+  </button>
+</div>
 
-<input [(ngModel)]="studente.name"><br>
-<input [(ngModel)]="studente.surname"><br>
-<input [(ngModel)]="studente.classe"><br>
-
-<button mat-raised-button color="primary" (click)="elimina()" style="background-color:antiquewhite; width:100px; height: 30px;">ELIMINA STUDENTE</button>
+<!-- Modal -->
+<div class="modalElimina" tabindex="-1" role="dialog">
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Elimina uno studente</h2>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="className">nome studente</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studente.name" >
+          <br>
+          <label for="className">cognome studente</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studente.surname" >
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModale()">Chiudi</button>
+        <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
+      </div>
+    </div>
+  </div>
+</div>

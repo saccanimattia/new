@@ -14,7 +14,6 @@ export class InputCreaClasseComponent{
 
   constructor(private servizio: PrendiDatiService) {}
 
-  plusIconClass = 'bi bi-plus';
 
 
   openModal() {

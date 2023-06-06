@@ -1,5 +1,5 @@
 <div *ngIf="studentiClasse.length !== 0; else noStudenti" class="studenti-container">
-  <h1>classe = {{classe.name}}</h1>
+  <h1>{{classe.name}}</h1>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -12,7 +12,7 @@
       <tr *ngFor="let alunno of studentiClasse">
         <td>{{ alunno.name }}</td>
         <td>{{ alunno.surname }}</td>
-        <td>{{ alunno.dateBirth }}</td>
+        <td>{{ alunno.birthDate }}</td>
       </tr>
     </tbody>
   </table>
@@ -21,3 +21,11 @@
 <ng-template #noStudenti>
   <p class="no-studenti">In questa classe non sono presenti studenti.</p>
 </ng-template>
+
+<table class="tabella">
+  <tr>
+    <td class="a"><app-input-nuovo-studente [classeFrequentata]="classe.name"></app-input-nuovo-studente></td>
+    <td class="a"><app-input-update-studente [classeFrequentata]="classe.name"></app-input-update-studente></td>
+    <td class="a"><app-input-elimina-studente [classeFrequentata]="classe.name"></app-input-elimina-studente></td>
+  </tr>
+</table>

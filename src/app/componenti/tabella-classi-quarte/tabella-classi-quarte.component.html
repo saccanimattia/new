@@ -1,13 +1,15 @@
 <h1>BLAISE PASCAL</h1>
-
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Numero</th>
       <th scope="col">
         Classe
-        <span class="float-end">
+        <span>
           <i class="bi bi-sort-alpha-down" (click)="ordinaClassi()"></i>
+        </span>
+        <span class="float-end">
+          <app-input-crea-classe></app-input-crea-classe>
         </span>
       </th>
     </tr>
@@ -18,13 +20,13 @@
       <td>{{ classe.name }}</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3"></td>
+    </tr>
+  </tfoot>
 </table>
 
 <div *ngIf="isClasse">
   <app-classe [classeS]="classeSelezionata"></app-classe>
 </div>
-
-<app-input-crea-classe></app-input-crea-classe>
-
-
-

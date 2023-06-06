@@ -1,7 +1,67 @@
-<p>inserisci nuovo studente</p>
+<div class="circle-button">
+  <button type="button" class="btn btn-primary" (click)="openModal()">
+    <i class="bi bi-plus"></i>
+  </button>
+</div>
 
-<input [(ngModel)]="studente.name"><br>
-<input [(ngModel)]="studente.surname"><br>
-<input [(ngModel)]="studente.classe"><br>
+<div class="modalNuovo" tabindex="-1" role="dialog" >
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Aggiungi studente/i</h2>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Scegli un'opzione:</label>
+          <br>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="choice" value="new" [(ngModel)]="selectedOption">
+            <label class="form-check-label" for="newOption">
+              Inserisci nuovo studente
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="choice" value="existing" [(ngModel)]="selectedOption">
+            <label class="form-check-label" for="existingOption">
+              Scegli dalla checkbox
+            </label>
+          </div>
+        </div>
+        <div *ngIf="selectedOption === 'new'">
+          <div class="form-group">
+            <label for="className">nome studente</label>
+            <br>
+            <input type="text" class="form-control" id="className" [(ngModel)]="studente.name">
+            <br>
+            <label for="className">cognome studente</label>
+            <br>
+            <input type="text" class="form-control" id="className" [(ngModel)]="studente.surname">
 
-<button mat-raised-button color="primary" (click)="inserisci()" style="background-color:antiquewhite; width:100px; height: 30px;">CREA STUDENTE</button>
+            <br>
+          </div>
+        </div>
+        <div *ngIf="selectedOption === 'existing'">
+          <div *ngIf="items.length!=0">
+            <div class="form-group">
+              <label>Seleziona uno o più studenti:</label>
+              <br>
+              <label *ngFor="let item of items">
+                <input type="checkbox" [(ngModel)]="item.selected">
+                {{ item.name }}   {{item.surname}}
+                <br>
+              </label>
+            </div>
+          </div>
+          <div *ngIf="items.length==0">
+            <p class="no-studenti">non sono presenti studenti non associati a nessuna classe</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
+        <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
+      </div>
+    </div>
+  </div>
+</div>
+
