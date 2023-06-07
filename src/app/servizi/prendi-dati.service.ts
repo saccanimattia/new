@@ -92,10 +92,12 @@ export class PrendiDatiService {
   }
 
 
-  idToClass(id: any){
-    const classeTrovata = this.classi.items.find((classe:any) =>
+  idToClass(id: any, cl: any){
+
+    const classeTrovata = cl.find((classe:any) =>
       classe.id === id
     );
+    console.log(classeTrovata)
     return classeTrovata.name
   }
 

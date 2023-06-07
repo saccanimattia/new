@@ -13,6 +13,7 @@ import { InputCreaClasseComponent } from './componenti/input-crea-classe/input-c
 import { InputUpdateStudenteComponent } from './componenti/input-update-studente/input-update-studente.component';
 import { AllStudentiComponent } from './componenti/all-studenti/all-studenti.component';
 import { NavbarComponent } from './componenti/navbar/navbar.component';
+import { InputNuovoAllStudentiComponent } from './componenti/input-nuovo-all-studenti/input-nuovo-all-studenti.component';
 
 
 
@@ -27,6 +28,7 @@ import { NavbarComponent } from './componenti/navbar/navbar.component';
     InputUpdateStudenteComponent,
     AllStudentiComponent,
     NavbarComponent,
+    InputNuovoAllStudentiComponent,
   ],
   imports: [
     BrowserModule,

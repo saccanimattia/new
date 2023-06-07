@@ -14,6 +14,8 @@ export class ClasseComponent{
   c:any;
   classeId: any
   classe: any
+  persone: any[] = []
+  i : any
   constructor(private prendi: PrendiDatiService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
        this.classeId = params['id'];
@@ -37,6 +39,7 @@ export class ClasseComponent{
       let a:any = await this.prendi.prendiStudenti()
       this.studentiClasse = a.filter((studente: any) => studente.classe === this.classeS);
       this.filteredArray = this.studentiClasse
+      this.prendiPersone()
   }
 
   searchQuery: string = '';
@@ -44,10 +47,19 @@ export class ClasseComponent{
 
   performSearch(): void {
     this.filteredArray = this.studentiClasse
-    this.filteredArray = this.studentiClasse.filter(item => {
-      return item.name.toLowerCase().includes(this.searchQuery.toLowerCase()) || item.surname.toLowerCase().includes(this.searchQuery.toLowerCase()) || item.birthDate.toLowerCase().includes(this.searchQuery.toLowerCase())
+    this.i = 0
+    this.filteredArray = this.filteredArray.filter(item => {
+      this.i = this.i+1
+      return this.persone[this.i - 1].toLowerCase().includes(this.searchQuery.toLowerCase());
     });
     console.log(this.filteredArray)
+  }
+
+  prendiPersone(){
+    for(let persona of this.filteredArray){
+      console.log(persona)
+      this.persone.push(persona.name + " " + persona.surname + " " + persona.birthDate)
+    }
   }
 
 }

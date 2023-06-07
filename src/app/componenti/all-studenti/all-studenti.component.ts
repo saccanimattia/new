@@ -9,33 +9,51 @@ import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
 export class AllStudentiComponent {
     studentiClasse: any[] = [];
     classi: any[] = [];
+    persone: any[] = [];
+    cl: any[] = [];
     c:any;
     classeId: any
     classe: any
+    i = 0;
     constructor(private prendi: PrendiDatiService) {
 
     }
 
     ngOnInit() {
+      this.prendiClassi()
       this.prendiStudenti()
+    }
 
+    ngOnChange() {
+      this.prendiClassi()
+      this.prendiStudenti()
     }
 
     trasformaClassi(){
       for(let studente of this.filteredArray){
         if(studente.classe != '')
-        studente.classe = this.prendi.idToClass(studente.classe)
+        studente.classe = this.prendi.idToClass(studente.classe, this.cl)
       }
     }
-
-
-
 
     async prendiStudenti(): Promise<void> {
         let a:any = await this.prendi.prendiStudenti()
         this.studentiClasse = a;
         this.filteredArray = this.studentiClasse
         this.trasformaClassi()
+        this.prendiPersone();
+    }
+
+    async prendiClassi(): Promise<void> {
+      try {
+
+        let quarte: any = await this.prendi.prendiClassi();
+        this.cl = quarte.items as any[]
+        console.log("rg")
+        console.log(this.cl)
+      } catch (err) {
+        console.log("Si è verificato un errore:", err);
+      }
     }
 
     searchQuery: string = '';
@@ -43,9 +61,22 @@ export class AllStudentiComponent {
 
     performSearch(): void {
       this.filteredArray = this.studentiClasse
-      this.filteredArray = this.studentiClasse.filter(item => {
-        return item.name.toLowerCase().includes(this.searchQuery.toLowerCase()) || item.surname.toLowerCase().includes(this.searchQuery.toLowerCase()) || item.birthDate.toLowerCase().includes(this.searchQuery.toLowerCase())
+      this.i = 0
+      this.filteredArray = this.filteredArray.filter(item => {
+        this.i = this.i+1
+        return this.persone[this.i - 1].toLowerCase().includes(this.searchQuery.toLowerCase());
       });
       console.log(this.filteredArray)
     }
+
+
+    prendiPersone(){
+      for(let persona of this.filteredArray){
+        this.persone.push(persona.name + " " + persona.surname + " " + persona.birthDate + " " + persona.classe)
+      }
+    }
 }
+
+
+
+

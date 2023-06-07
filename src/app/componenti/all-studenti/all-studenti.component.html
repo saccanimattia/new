@@ -16,7 +16,12 @@
         <th scope="col">Nome</th>
         <th scope="col">Cognome</th>
         <th scope="col">Data di nascita</th>
-        <th scope="col">Classe</th>
+        <th scope="col">
+          Classe
+          <span class="float-end">
+            <app-input-nuovo-all-studenti></app-input-nuovo-all-studenti>
+          </span>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -31,6 +36,6 @@
 </div>
 
 <ng-template #noStudenti>
-  <p class="no-studenti">In questa classe non sono presenti studenti.</p>
+  <p class="no-studenti">Non sono presenti studenti</p>
 </ng-template>
 

@@ -1,0 +1,41 @@
+<div class="circle-button">
+  <button type="button" class="btn btn-primary" (click)="openModal()">
+    <i class="bi bi-plus"></i>
+  </button>
+</div>
+
+<div class="modalAllStudenti" tabindex="-1" role="dialog" >
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Aggiungi studente/i</h2>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="className">nome studente</label>
+            <br>
+            <input type="text" class="form-control" id="className" [(ngModel)]="studente.name">
+            <br>
+            <label for="className">cognome studente</label>
+            <br>
+            <input type="text" class="form-control" id="className" [(ngModel)]="studente.surname">
+            <br>
+            <label for="className">data nascita dello studente</label>
+            <br>
+            <input type="text" class="form-control" id="className" [(ngModel)]="studente.birthDate">
+            <br>
+            <label for="className">classe</label>
+            <br>
+            <input type="text" class="form-control" id="className" [(ngModel)]="studente.classe">
+            <br>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
+        <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
