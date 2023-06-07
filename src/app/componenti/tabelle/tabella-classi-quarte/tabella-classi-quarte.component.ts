@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PrendiDatiService } from '../../servizi/prendi-dati.service';
+import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PocketBaseService } from 'src/app/servizi/pocket-base-service.service';
 import { Subscription } from 'rxjs';
@@ -15,6 +15,7 @@ declare var window : any
 export class TabellaClassiQuarteComponent implements OnInit{
   classiQuarte: any[] = [];
   classeSelezionata: any
+  selectedClasses: any[] = []
   isClasse: any
   formModal:any
   private studentsSubscription!: Subscription;
@@ -81,6 +82,18 @@ export class TabellaClassiQuarteComponent implements OnInit{
       return item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
     });
     console.log(this.filteredArray)
+  }
+
+  toggleSelected(classe: any) {
+    if (classe.selected) {
+      this.selectedClasses.push(classe);
+    } else {
+      const index = this.selectedClasses.findIndex((selectedClasse) => selectedClasse.name === classe.name);
+      if (index !== -1) {
+        this.selectedClasses.splice(index, 1);
+      }
+    }
+    console.log(this.selectedClasses)
   }
 
 }

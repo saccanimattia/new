@@ -1,9 +1,28 @@
+p {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Stili per gli input */
+input {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 200px;
+}
+
+/* Stili per il pulsante */
+button {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+}
 // Variabili
-$primary-color: red;
+$primary-color: #007bff;
 $secondary-color: #6c757d;
 $font-color: #333;
+
 // Modal
-.modalElimina {
+.modal {
   display: none;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -71,7 +90,7 @@ $font-color: #333;
 }
 
 // Buttons
-.btn-danger {
+.btn-primary {
   background-color: $primary-color;
   border-color: $primary-color;
   width: 100px;
@@ -102,7 +121,7 @@ $font-color: #333;
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #007bff;
   position: relative;
 }
 
@@ -114,26 +133,33 @@ $font-color: #333;
   padding: 0;
   cursor: pointer;
   position: absolute;
-  top: 53%;
+  top: 8%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.student-table {
-  width: 100%;
-  border-collapse: collapse;
+.close {
+  float:right;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 
-  th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
 
-  th {
-    background-color: #f2f2f2;
-  }
 
-  tr:hover {
-    background-color: #f5f5f5;
+  span {
+
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    transform: translate(-50%, -50%);
+    position: relative;
+    left: 150%;
+    bottom:20%;
   }
 }

@@ -1,0 +1,66 @@
+<h1>TUTTE LE CLASSI</h1>
+
+<div class="search-form">
+  <form class="form-inline">
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+    </div>
+  </form>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" class="checkbox-header">
+        <div *ngIf="selectedClasses.length > 0">
+          <app-input-elimina-classe [classes]="selectedClasses"></app-input-elimina-classe>
+        </div>
+        <div *ngIf="selectedClasses.length == 0"></div>
+      </th>
+      <th scope="col" class="d-flex align-items-center justify-content-between">
+        <span>Classe<i class="bi bi-sort-alpha-down" (click)="ordinaClassi()"></i></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="input-row">
+          <app-input-update-classi></app-input-update-classi>
+        </div>
+        <div class="input-row">
+          <app-input-crea-classe></app-input-crea-classe>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let classe of filteredArray; let i = index">
+      <td class="checkbox-cell">
+        <label>
+          <div class="d-flex align-items-center" (click)="visualizza(classe, i)">
+            <input type="checkbox" [(ngModel)]="classe.selected" (click)="$event.stopPropagation()" (change)="toggleSelected(classe)">
+          </div>
+        </label>
+      </td>
+      <td>
+        <label>
+          <div class="d-flex align-items-center" (click)="visualizza(classe, i)">
+            <span>{{ classe.name }}</span>
+          </div>
+        </label>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+
+
+<div *ngIf="isClasse">
+  <app-classe></app-classe>
+</div>

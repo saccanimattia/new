@@ -1,0 +1,55 @@
+<div class="circle-button">
+  <button type="button" class="btn btn-primary"(click)="openModalee()">
+    <i class="bi bi-arrow-clockwise"></i>
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modalUpdate" tabindex="-1" role="dialog">
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Aggiorna i dati di uno studente<button type="button" class="close" (click)="closeModalee()">
+          <span aria-hidden="true">&times;</span>
+        </button></h2>
+      </div>
+      <div class="modal-body">
+        <h3>studente da aggiornare</h3>
+        <div class="form-group">
+          <label for="className">nome studente</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteA.name" >
+          <br>
+          <label for="className">cognome studente</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteA.surname" >
+          <br>
+          <br>
+        </div>
+        <h3>studente aggiornato</h3>
+        <div class="form-group">
+          <label for="className">nome studente aggiornato</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.name" >
+          <br>
+          <label for="className">cognome studente aggiornato</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.surname" >
+          <br>
+          <label for="className">classe studente aggiornata</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.classe" >
+          <br>
+          <label for="className">data nascita studente aggiornata</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.birthDate" >
+          <br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModalee()">Chiudi</button>
+        <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
+      </div>
+    </div>
+  </div>
+</div>

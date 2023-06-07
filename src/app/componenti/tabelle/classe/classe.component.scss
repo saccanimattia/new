@@ -66,3 +66,19 @@ h1 {
     border-radius: 4px;
   }
 }
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.input-row {
+  margin-left: 10px; /* Aggiusta il margine a sinistra come desiderato */
+}

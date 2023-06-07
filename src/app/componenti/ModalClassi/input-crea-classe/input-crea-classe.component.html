@@ -9,7 +9,9 @@
   <div class="modal-dialog centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">Crea Nuova Classe</h2>
+        <h2 class="modal-title">Crea Nuova Classe<button type="button" class="close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button></h2>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -19,7 +21,6 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
         <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
       </div>
     </div>

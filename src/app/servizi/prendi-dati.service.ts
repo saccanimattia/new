@@ -64,6 +64,15 @@ export class PrendiDatiService {
     }
   }
 
+  async eliminaClasse(id: any): Promise<any> {
+    try {
+      const record = await this.pb.collection('Classes').delete(id);
+    } catch (err) {
+      console.log("Si è verificato un errore:", err);
+      return []; // Restituisci un array vuoto in caso di errore
+    }
+  }
+
   async updateStudente(studente: any, id: any): Promise<any> {
     try {
       const record = await this.pb.collection('Students').update(id, studente);

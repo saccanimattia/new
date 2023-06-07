@@ -1,0 +1,44 @@
+<div class="circle-button">
+  <button type="button" class="btn btn-primary"(click)="openModale()">
+    <i class="bi bi-dash-circle"></i>
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modalElimina" tabindex="-1" role="dialog">
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Elimina classe/classi<button type="button" class="close" (click)="closeModale()">
+          <span aria-hidden="true">&times;</span>
+        </button></h2>
+      </div>
+      <div class="modal-body">
+        <div class="search-form">
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control"  [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+            </div>
+          </form>
+        </div>
+        <table class="student-table">
+          <thead>
+            <tr>
+
+              <th>Nome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let classe of filteredArray">
+              <td>{{ classe.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-danger" (click)="deleteClasses()">Conferma</button>
+      </div>
+    </div>
+  </div>
+</div>

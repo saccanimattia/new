@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InputCreaClasseComponent } from './componenti/input-crea-classe/input-crea-classe.component';
 import { InputNuovoStudenteComponent } from './componenti/input-nuovo-studente/input-nuovo-studente.component';
-import { InputUpdateStudenteComponent } from './componenti/input-update-studente/input-update-studente.component';
+import { InputUpdateStudenteComponent } from './componenti/ModalStudentiClasse/input-update-studente/input-update-studente.component';
 import { InputEliminaStudenteComponent } from './componenti/input-elimina-studente/input-elimina-studente.component';
 import { ClasseComponent } from './componenti/classe/classe.component';
 import { TabellaClassiQuarteComponent } from './componenti/tabella-classi-quarte/tabella-classi-quarte.component';

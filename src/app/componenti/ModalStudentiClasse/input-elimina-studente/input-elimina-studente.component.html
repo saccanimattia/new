@@ -9,7 +9,9 @@
   <div class="modal-dialog centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">Elimina studenti</h2>
+        <h2 class="modal-title">Elimina studenti<button type="button" class="close" (click)="closeModale()">
+          <span aria-hidden="true">&times;</span>
+        </button></h2>
       </div>
       <div class="modal-body">
         <div class="search-form">
@@ -40,7 +42,7 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModale()">Chiudi</button>
+
         <button type="button" class="btn btn-danger" (click)="deleteStudents()">Conferma</button>
       </div>
     </div>

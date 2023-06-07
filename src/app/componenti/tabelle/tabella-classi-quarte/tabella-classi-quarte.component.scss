@@ -5,7 +5,6 @@ h1 {
   text-align: center;
   margin-top: 20px;
 }
-
 .search-form {
   display: flex;
   justify-content: center;
@@ -43,4 +42,50 @@ h1 {
 
 .float-end {
   float: right;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+
+  .btn-group {
+    margin-left: 10px;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.bi {
+  vertical-align: middle;
+}
+
+.table th.checkbox-header,
+.table td.checkbox-cell {
+  width: 50px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.input-row {
+  margin-left: 10px; /* Aggiusta il margine a sinistra come desiderato */
 }
