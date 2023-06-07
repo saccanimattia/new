@@ -16,7 +16,8 @@ import { NavbarComponent } from './componenti/navbar/navbar.component';
 import { InputNuovoAllStudentiComponent } from './componenti/ModalAllStudenti/input-nuovo-all-studenti/input-nuovo-all-studenti.component';
 import { InputEliminaClasseComponent } from './componenti/ModalClassi/input-elimina-classe/input-elimina-classe.component';
 import { InputUpdateClassiComponent } from './componenti/ModalClassi/input-update-classi/input-update-classi.component';
-
+import { InputUpdateAllStudentiComponent } from './componenti/ModalAllStudenti/input-update-all-studenti/input-update-all-studenti.component';
+import { InputEliminaAllStudentiComponent } from './componenti/ModalAllStudenti/input-elimina-all-studenti/input-elimina-all-studenti.component';
 
 
 @NgModule({
@@ -33,6 +34,8 @@ import { InputUpdateClassiComponent } from './componenti/ModalClassi/input-updat
     InputNuovoAllStudentiComponent,
     InputEliminaClasseComponent,
     InputUpdateClassiComponent,
+    InputUpdateAllStudentiComponent,
+    InputEliminaAllStudentiComponent,
   ],
   imports: [
     BrowserModule,

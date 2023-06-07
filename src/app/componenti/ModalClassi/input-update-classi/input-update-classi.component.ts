@@ -7,18 +7,12 @@ import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
   styleUrls: ['./input-update-classi.component.scss']
 })
 export class InputUpdateClassiComponent {
-  studenteA:any = {
-    name: 'nome',
-    surname: 'cognome',
-    classe: 'classe',
-    birthDate: 'data di nascita'
+  classeA:any = {
+    name: 'nome classe',
   };
 
-  studenteB:any = {
-    name: 'nome',
-    surname: 'cognome',
-    classe: 'classe',
-    birthDate: 'data di nascita'
+  classeB:any = {
+    name: 'nome classe',
   };
 
   @Input() classeFrequentata: any
@@ -42,9 +36,7 @@ export class InputUpdateClassiComponent {
   }
 
   aggiorna(){
-    this.studenteA.birthDate = new Date(this.studenteA.birthDate)
-    this.studenteB.birthDate = new Date(this.studenteB.birthDate)
-    this.studenteB.classe = this.servizio.classeToId(this.studenteB.classe)
-    this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname, this.servizio.classeToId(this.classeFrequentata)))
+    this.classeA.id = this.servizio.classeToId(this.classeA.name)
+    this.servizio.updateClasse(this.classeB, this.servizio.classeToId(this.classeA.name))
   }
 }

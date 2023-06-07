@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PrendiDatiService } from './servizi/prendi-dati.service';
+
 
 @Component({
   selector: 'app-root',

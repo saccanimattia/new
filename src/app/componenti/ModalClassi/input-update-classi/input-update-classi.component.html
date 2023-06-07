@@ -16,38 +16,22 @@
       <div class="modal-body">
         <h3>studente da aggiornare</h3>
         <div class="form-group">
-          <label for="className">nome studente</label>
+          <label for="className">nome classe</label>
           <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="studenteA.name" >
-          <br>
-          <label for="className">cognome studente</label>
-          <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="studenteA.surname" >
+          <input type="text" class="form-control" id="className" [(ngModel)]="classeA.name" >
           <br>
           <br>
         </div>
         <h3>studente aggiornato</h3>
         <div class="form-group">
-          <label for="className">nome studente aggiornato</label>
+          <label for="className">nome classe aggiornato</label>
           <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.name" >
+          <input type="text" class="form-control" id="className" [(ngModel)]="classeB.name" >
           <br>
-          <label for="className">cognome studente aggiornato</label>
-          <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.surname" >
-          <br>
-          <label for="className">classe studente aggiornata</label>
-          <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.classe" >
-          <br>
-          <label for="className">data nascita studente aggiornata</label>
-          <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.birthDate" >
           <br>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModalee()">Chiudi</button>
         <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
       </div>
     </div>

@@ -1,14 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
 
-
 @Component({
-  selector: 'app-input-elimina-studente',
-  templateUrl: './input-elimina-studente.component.html',
-  styleUrls: ['./input-elimina-studente.component.scss']
+  selector: 'app-input-elimina-all-studenti',
+  templateUrl: './input-elimina-all-studenti.component.html',
+  styleUrls: ['./input-elimina-all-studenti.component.scss']
 })
-export class InputEliminaStudenteComponent {
-
+export class InputEliminaAllStudentiComponent {
   @Input() classeFrequentata: any
   @Input() students: any[] = []
   filteredArray: any[] = []
@@ -18,6 +16,7 @@ export class InputEliminaStudenteComponent {
   constructor(private servizio: PrendiDatiService) {}
 
   openModale() {
+
     const modal = document.querySelector('.modalElimina');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
@@ -33,7 +32,8 @@ export class InputEliminaStudenteComponent {
 
 
   elimina(studente: any) {
-    studente.classe = this.servizio.classeToId(this.classeFrequentata)
+    if(studente.classe != '')
+      studente.classe = this.servizio.classeToId(studente.classe)
     studente.birthDate = new Date(studente.birthDate)
     this.servizio.eliminaStudente(this.servizio.studenteToId(studente.name, studente.surname, studente.classe))
   }
@@ -57,6 +57,8 @@ export class InputEliminaStudenteComponent {
   prendiPersone(){
     console.log("ifb")
     for(let persona of this.filteredArray){
+      console.log("persona")
+      console.log(persona)
       this.persone.push(persona.name + " " + persona.surname + " " + persona.birthDate)
     }
   }

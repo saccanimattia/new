@@ -18,8 +18,7 @@ export class PrendiDatiService {
   try {
     const result = await this.pb.collection('Students').getList(1, 50);
     this.studenti = result.items;
-    console.log("this.studenti");
-    console.log(this.studenti);
+
   } catch (err) {
     console.log("Si è verificato un errore:", err);
   }
@@ -82,6 +81,15 @@ export class PrendiDatiService {
     }
   }
 
+  async updateClasse(classe: any, id: any): Promise<any> {
+    try {
+      const record = await this.pb.collection('Classes').update(id, classe);
+    } catch (err) {
+      console.log("Si è verificato un errore:", err);
+      return []; // Restituisci un array vuoto in caso di errore
+    }
+  }
+
   studenteToId(nome: any, cognome: any, classeS: any){
 
     const studenteTrovato = this.studenti.find((studente:any) =>
@@ -89,7 +97,7 @@ export class PrendiDatiService {
       studente.surname === cognome &&
       studente.classe === classeS
     );
-    console.log(studenteTrovato)
+
     return studenteTrovato.id
   }
 
@@ -102,11 +110,9 @@ export class PrendiDatiService {
 
 
   idToClass(id: any, cl: any){
-
     const classeTrovata = cl.find((classe:any) =>
       classe.id === id
     );
-    console.log(classeTrovata)
     return classeTrovata.name
   }
 

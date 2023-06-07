@@ -13,19 +13,34 @@
   <table class="table table-striped custom-table">
     <thead>
       <tr>
+        <th *ngIf="selectedStudents.length > 0" class="first-column">
+          <app-input-elimina-all-studenti [students]="selectedStudents"></app-input-elimina-all-studenti>
+        </th>
+        <th *ngIf="selectedStudents.length == 0" class="first-column"></th>
         <th scope="col">Nome</th>
         <th scope="col">Cognome</th>
         <th scope="col">Data di nascita</th>
-        <th scope="col">
-          Classe
-          <span class="float-end">
+        <th class="d-flex align-items-center justify-content-between" scope="col">
+          <span>Classe</span>
+          <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+          <div class="input-row">
             <app-input-nuovo-all-studenti></app-input-nuovo-all-studenti>
-          </span>
+          </div>
+          <div class="input-row">
+            <app-input-update-all-studenti></app-input-update-all-studenti>
+          </div>
         </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let alunno of filteredArray">
+        <td class="first-column">
+          <input type="checkbox" [(ngModel)]="alunno.selected" (change)="toggleStudentSelection(alunno)">
+        </td>
         <td>{{ alunno.name }}</td>
         <td>{{ alunno.surname }}</td>
         <td>{{ alunno.birthDate }}</td>

@@ -59,12 +59,11 @@ export class ClasseComponent{
       this.i = this.i+1
       return this.persone[this.i - 1].toLowerCase().includes(this.searchQuery.toLowerCase());
     });
-    console.log(this.filteredArray)
   }
 
   prendiPersone(){
     for(let persona of this.filteredArray){
-      console.log(persona)
+
       this.persone.push(persona.name + " " + persona.surname + " " + persona.birthDate)
     }
   }

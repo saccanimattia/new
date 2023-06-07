@@ -11,6 +11,7 @@ export class AllStudentiComponent {
     classi: any[] = [];
     persone: any[] = [];
     cl: any[] = [];
+    selectedStudents: any[] = [];
     c:any;
     classeId: any
     classe: any
@@ -49,8 +50,7 @@ export class AllStudentiComponent {
 
         let quarte: any = await this.prendi.prendiClassi();
         this.cl = quarte.items as any[]
-        console.log("rg")
-        console.log(this.cl)
+
       } catch (err) {
         console.log("Si è verificato un errore:", err);
       }
@@ -66,7 +66,7 @@ export class AllStudentiComponent {
         this.i = this.i+1
         return this.persone[this.i - 1].toLowerCase().includes(this.searchQuery.toLowerCase());
       });
-      console.log(this.filteredArray)
+
     }
 
 
@@ -74,6 +74,18 @@ export class AllStudentiComponent {
       for(let persona of this.filteredArray){
         this.persone.push(persona.name + " " + persona.surname + " " + persona.birthDate + " " + persona.classe)
       }
+    }
+
+    toggleStudentSelection(student: any): void {
+      if (student.selected) {
+        this.selectedStudents.push(student);
+      } else {
+        const index = this.selectedStudents.indexOf(student);
+        if (index > -1) {
+          this.selectedStudents.splice(index, 1);
+        }
+      }
+
     }
 }
 

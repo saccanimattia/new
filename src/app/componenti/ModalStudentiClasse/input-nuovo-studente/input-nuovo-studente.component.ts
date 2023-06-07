@@ -65,7 +65,7 @@ export class InputNuovoStudenteComponent{
     let a:any = await this.servizio.prendiStudenti()
     this.items = a.filter((studente: any) => studente.classe === "");
     this.filteredArray = this.items
-    console.log(this.filteredArray)
+
     this.prendiPersone()
 }
 
@@ -98,7 +98,6 @@ toggleStudentSelection(student: any): void {
       this.selectedStudents.splice(index, 1);
     }
   }
-  console.log(this.selectedStudents)
 }
 
 performSearch(): void {
@@ -111,10 +110,7 @@ performSearch(): void {
 }
 
 prendiPersone(){
-  console.log("ifb")
   for(let persona of this.filteredArray){
-    console.log("persona")
-    console.log(persona)
     this.persone.push(persona.name + " " + persona.surname + " " + persona.birthDate)
   }
 }
