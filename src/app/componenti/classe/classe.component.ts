@@ -8,10 +8,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./classe.component.scss']
 })
 export class ClasseComponent{
-  @Input() classeS: any
+  classeS: any
   studentiClasse: any[] = [];
   classi: any[] = [];
-  c:any;
+
   classeId: any
   classe: any
   persone: any[] = []
@@ -27,13 +27,20 @@ export class ClasseComponent{
     this.prendiStudenti()
   }
 
+  async prendiClassi(): Promise<void> {
+    try {
 
-  prendiClassi(){
-    this.c = this.prendi.prendiClassidaFiglio()
-    this.classi = this.c.items
-    this.classe = this.classi[this.classeId-1]
-    this.classeS = this.classe.id
+      let quarte: any = await this.prendi.prendiClassi();
+      this.classi = quarte.items as any[]
+      this.classe = this.classi[this.classeId-1]
+      this.classeS = this.classe.id
+    } catch (err) {
+      console.log("Si è verificato un errore:", err);
+    }
   }
+
+
+
 
   async prendiStudenti(): Promise<void> {
       let a:any = await this.prendi.prendiStudenti()

@@ -107,9 +107,5 @@ export class PrendiDatiService {
     return this.classi.items
   }
 
-  prendiClassidaFiglio(){
-    this.prendiClassi()
-    return this.classi
-  }
 
 }
