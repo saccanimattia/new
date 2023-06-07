@@ -69,4 +69,18 @@ export class ClasseComponent{
     }
   }
 
+  selectedStudents: any[] = [];
+
+toggleStudentSelection(student: any): void {
+  if (student.selected) {
+    this.selectedStudents.push(student);
+  } else {
+    const index = this.selectedStudents.indexOf(student);
+    if (index > -1) {
+      this.selectedStudents.splice(index, 1);
+    }
+  }
+}
+
+
 }

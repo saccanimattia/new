@@ -13,16 +13,21 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th *ngIf="selectedStudents.length > 0 " ><app-input-elimina-studente [classeFrequentata]="classe.name" [students]="selectedStudents" ></app-input-elimina-studente>
+        <th *ngIf="selectedStudents.length == 0 " ></th>
         <th>Nome</th>
         <th>Cognome</th>
         <th>Data di nascita</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let alunno of filteredArray">
-        <td>{{ alunno.name }}</td>
-        <td>{{ alunno.surname }}</td>
-        <td>{{ alunno.birthDate }}</td>
+      <tr *ngFor="let item of filteredArray">
+        <td>
+          <input type="checkbox" [(ngModel)]="item.selected" (change)="toggleStudentSelection(item)">
+        </td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.surname }}</td>
+        <td>{{ item.birthDate }}</td>
       </tr>
     </tbody>
   </table>
@@ -36,6 +41,5 @@
   <tr>
     <td class="a"><app-input-nuovo-studente [classeFrequentata]="classe.name"></app-input-nuovo-studente></td>
     <td class="a"><app-input-update-studente [classeFrequentata]="classe.name"></app-input-update-studente></td>
-    <td class="a"><app-input-elimina-studente [classeFrequentata]="classe.name"></app-input-elimina-studente></td>
   </tr>
 </table>

@@ -9,22 +9,39 @@
   <div class="modal-dialog centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">Elimina uno studente</h2>
+        <h2 class="modal-title">Elimina studenti</h2>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <label for="className">nome studente</label>
-          <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="studente.name" >
-          <br>
-          <label for="className">cognome studente</label>
-          <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="studente.surname" >
+        <div class="search-form">
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control"  [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+            </div>
+          </form>
         </div>
+        <table class="student-table">
+          <thead>
+            <tr>
+
+              <th>Nome</th>
+              <th>Cognome</th>
+              <th>Data di nascita</th>
+              <th>Classe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of filteredArray">
+              <td>{{ student.name }}</td>
+              <td>{{ student.surname }}</td>
+              <td>{{ student.birthDate }}</td>
+              <td>{{ classeFrequentata }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModale()">Chiudi</button>
-        <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
+        <button type="button" class="btn btn-danger" (click)="deleteStudents()">Conferma</button>
       </div>
     </div>
   </div>

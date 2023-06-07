@@ -17,6 +17,11 @@ export class InputNuovoStudenteComponent{
   selectedOption: string = 'new';
   selectedStudents: any[] = [];
   @Input() classeFrequentata: any
+  testo = "scegli dall'elenco"
+  filteredArray: any[] = []
+  persone: any[] = []
+  i: any
+  searchQuery: any
 
   constructor(private servizio:PrendiDatiService){}
 
@@ -45,13 +50,10 @@ export class InputNuovoStudenteComponent{
       this.studente.birthDate = new Date(this.studente.birthDate)
       this.servizio.creaNuovoStudente(this.studente)
     } else if (this.selectedOption === 'existing') {
-      for (let item of this.items) {
-        if (item.selected) {
-          this.selectedStudents.push(item);
-        }
-      }
       this.modifica()
-    }
+      }
+
+
 
 
     this.items.forEach(item => item.selected = false);
@@ -62,6 +64,9 @@ export class InputNuovoStudenteComponent{
   async prendiStudenti(): Promise<void> {
     let a:any = await this.servizio.prendiStudenti()
     this.items = a.filter((studente: any) => studente.classe === "");
+    this.filteredArray = this.items
+    console.log(this.filteredArray)
+    this.prendiPersone()
 }
 
 modifica(){
@@ -69,6 +74,48 @@ modifica(){
     let s = this.servizio.studenteToId(stud.name, stud.surname, '')
     stud.classe = this.servizio.classeToId(this.classeFrequentata)
     this.servizio.updateStudente(stud, s)
+  }
+}
+
+cambiaOpzione(){
+  if(this.selectedOption == 'new'){
+    this.selectedOption = 'existing';
+    this.testo = 'inserisci manualmente'
+  }
+  else{
+    this.selectedOption = 'new';
+    this.testo = "scegli dall'elenco"
+  }
+
+}
+
+toggleStudentSelection(student: any): void {
+  if (student.selected) {
+    this.selectedStudents.push(student);
+  } else {
+    const index = this.selectedStudents.indexOf(student);
+    if (index > -1) {
+      this.selectedStudents.splice(index, 1);
+    }
+  }
+  console.log(this.selectedStudents)
+}
+
+performSearch(): void {
+  this.filteredArray = this.items
+  this.i = 0
+  this.filteredArray = this.filteredArray.filter(item => {
+    this.i = this.i+1
+    return this.persone[this.i - 1].toLowerCase().includes(this.searchQuery.toLowerCase());
+  });
+}
+
+prendiPersone(){
+  console.log("ifb")
+  for(let persona of this.filteredArray){
+    console.log("persona")
+    console.log(persona)
+    this.persone.push(persona.name + " " + persona.surname + " " + persona.birthDate)
   }
 }
 

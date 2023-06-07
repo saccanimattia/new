@@ -8,25 +8,12 @@
   <div class="modal-dialog centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">Aggiungi studente/i</h2>
+        <h2 class="modal-title">Aggiungi studente/i <button type="button" class="close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button></h2>
+
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <label>Scegli un'opzione:</label>
-          <br>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="choice" value="new" [(ngModel)]="selectedOption">
-            <label class="form-check-label" for="newOption">
-              Inserisci nuovo studente
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="choice" value="existing" [(ngModel)]="selectedOption">
-            <label class="form-check-label" for="existingOption">
-              Scegli dalla checkbox
-            </label>
-          </div>
-        </div>
         <div *ngIf="selectedOption === 'new'">
           <div class="form-group">
             <label for="className">nome studente</label>
@@ -44,17 +31,34 @@
           </div>
         </div>
         <div *ngIf="selectedOption === 'existing'">
+          <div class="search-form">
+            <form class="form-inline">
+              <div class="form-group">
+                <input type="text" class="form-control"  [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+              </div>
+            </form>
+          </div>
           <div *ngIf="items.length!=0">
-            <div class="form-group">
-              <label>Seleziona uno o più studenti:</label>
-              <br>
-              <br>
-              <label *ngFor="let item of items">
-                <input type="checkbox" [(ngModel)]="item.selected">
-                {{item.name }}   {{item.surname}}
-                <br>
-              </label>
-            </div>
+            <table class="student-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Nome</th>
+                  <th>Cognome</th>
+                  <th>Data di nascita</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of filteredArray">
+                  <td>
+                    <input type="checkbox" [(ngModel)]="item.selected" (change)="toggleStudentSelection(item)" style="width:30px">
+                  </td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.surname }}</td>
+                  <td>{{ item.birthDate }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div *ngIf="items.length==0">
             <p class="no-studenti">non sono presenti studenti non associati a nessuna classe</p>
@@ -62,7 +66,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
+        <button type="button" class="btn btn-secondary" id="ins" (click)="cambiaOpzione()" style=" width:200px;">{{testo}}</button>
         <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
       </div>
     </div>
