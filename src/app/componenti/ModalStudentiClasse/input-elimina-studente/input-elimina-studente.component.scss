@@ -161,3 +161,8 @@ $font-color: #333;
     left: 50%;
   }
 }
+
+.table-container {
+  max-height: 300px; /* Imposta la larghezza massima */
+  overflow-y: auto; /* Abilita la barra di scorrimento orizzontale */
+}

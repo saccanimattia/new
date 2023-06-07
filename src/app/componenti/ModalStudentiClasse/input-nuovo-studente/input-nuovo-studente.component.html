@@ -39,6 +39,7 @@
             </form>
           </div>
           <div *ngIf="items.length!=0">
+            <div class="table-container">
             <table class="student-table">
               <thead>
                 <tr>
@@ -59,6 +60,7 @@
                 </tr>
               </tbody>
             </table>
+          </div>
           </div>
           <div *ngIf="items.length==0">
             <p class="no-studenti">non sono presenti studenti non associati a nessuna classe</p>

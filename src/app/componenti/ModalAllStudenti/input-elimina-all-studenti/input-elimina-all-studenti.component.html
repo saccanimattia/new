@@ -21,6 +21,7 @@
             </div>
           </form>
         </div>
+        <div class="table-container">
         <table class="student-table">
           <thead>
             <tr>
@@ -30,14 +31,15 @@
               <th>Data di nascita</th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let student of filteredArray index as i">
+          <tbody >
+            <tr *ngFor="let student of filteredArray index as i" >
               <td>{{ student.name }}</td>
               <td>{{ student.surname }}</td>
               <td>{{ student.birthDate }}</td>
             </tr>
           </tbody>
         </table>
+      </div>
       </div>
       <div class="modal-footer">
 
