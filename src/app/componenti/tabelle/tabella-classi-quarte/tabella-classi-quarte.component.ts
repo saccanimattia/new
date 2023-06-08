@@ -3,6 +3,7 @@ import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PocketBaseService } from '../../../servizi/pocket-base-service.service'
 import { Subscription } from 'rxjs';
+import { ArrayServiceService } from '../../../servizi/array-service.service';
 
 
 declare var window : any
@@ -23,7 +24,7 @@ export class TabellaClassiQuarteComponent implements OnInit{
   searchQuery: string = '';
   filteredArray: any[] = [];
 
-  constructor(private prendi: PrendiDatiService, private router : Router, private pocketBaseService: PocketBaseService) {
+  constructor(private prendi: PrendiDatiService, private router : Router, private pocketBaseService: PocketBaseService, private arr:ArrayServiceService) {
 
   }
 
@@ -53,6 +54,7 @@ export class TabellaClassiQuarteComponent implements OnInit{
       let quarte: any = await this.prendi.prendiClassi();
       this.classiQuarte = quarte.items as any[]
       this.filteredArray = this.classiQuarte
+      this.arr.inizializzaClassi(this.classiQuarte)
     } catch (err) {
       console.log("Si è verificato un errore:", err);
     }
@@ -95,7 +97,10 @@ export class TabellaClassiQuarteComponent implements OnInit{
     }
     console.log(this.selectedClasses)
   }
-
+   modalChiuso(){
+    this.classiQuarte = this.arr.prendiClassi()
+    this.filteredArray = this.classiQuarte
+   }
 }
 
 

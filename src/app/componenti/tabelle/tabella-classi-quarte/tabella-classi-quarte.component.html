@@ -13,7 +13,7 @@
     <tr>
       <th scope="col" class="checkbox-header">
         <div *ngIf="selectedClasses.length > 0">
-          <app-input-elimina-classe [classes]="selectedClasses"></app-input-elimina-classe>
+          <app-input-elimina-classe [classes]="selectedClasses" (buttonClick)="modalChiuso()"></app-input-elimina-classe>
         </div>
         <div *ngIf="selectedClasses.length == 0"></div>
       </th>
@@ -47,11 +47,11 @@
         <span></span>
 
         <div class="input-row">
-          <app-input-crea-classe></app-input-crea-classe>
+          <app-input-crea-classe (buttonClick)="modalChiuso()"></app-input-crea-classe>
         </div>
 
         <div class="input-row">
-          <app-input-update-classi></app-input-update-classi>
+          <app-input-update-classi (buttonClick)="modalChiuso()"></app-input-update-classi>
         </div>
       </th>
     </tr>

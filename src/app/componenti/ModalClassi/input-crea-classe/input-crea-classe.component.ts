@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
+import { ArrayServiceService } from '../../../servizi/array-service.service';
 
 
 @Component({
@@ -11,8 +12,8 @@ export class InputCreaClasseComponent{
   classe: any = {
     name: 'nome della classe'
   };
-
-  constructor(private servizio: PrendiDatiService) {}
+  @Output() buttonClick = new EventEmitter<void>();
+  constructor(private servizio: PrendiDatiService, private arr: ArrayServiceService) {}
 
 
 
@@ -26,7 +27,7 @@ export class InputCreaClasseComponent{
     const modal = document.querySelector('.modal');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
-    window.location.reload();
+    this.buttonClick.emit();
   }
 
   saveClass() {
@@ -37,5 +38,6 @@ export class InputCreaClasseComponent{
 
   creaClasse() {
     this.servizio.creaNuovaClasse(this.classe);
+    this.arr.aggiungiClasse(this.classe)
   }
 }

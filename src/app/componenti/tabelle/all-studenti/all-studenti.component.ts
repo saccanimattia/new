@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
+import { ArrayServiceService } from '../../../servizi/array-service.service';
 
 @Component({
   selector: 'app-all-studenti',
@@ -16,7 +17,7 @@ export class AllStudentiComponent {
     classeId: any
     classe: any
     i = 0;
-    constructor(private prendi: PrendiDatiService) {
+    constructor(private prendi: PrendiDatiService, private arr:ArrayServiceService) {
 
     }
 
@@ -43,6 +44,7 @@ export class AllStudentiComponent {
         this.filteredArray = this.studentiClasse
         this.trasformaClassi()
         this.prendiPersone();
+        this.arr.inizializzaAllStudenti(this.studentiClasse)
     }
 
     async prendiClassi(): Promise<void> {
@@ -87,6 +89,13 @@ export class AllStudentiComponent {
       }
 
     }
+
+    modalChiuso(){
+      console.log(this.studentiClasse)
+      this.studentiClasse = this.arr.prendiAllStudenti()
+      console.log(this.studentiClasse)
+      this.filteredArray = this.studentiClasse
+     }
 }
 
 

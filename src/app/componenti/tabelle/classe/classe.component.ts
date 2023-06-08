@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 import { ActivatedRoute } from '@angular/router';
+import { ArrayServiceService } from '../../../servizi/array-service.service';
 
 @Component({
   selector: 'app-classe',
@@ -16,7 +17,7 @@ export class ClasseComponent{
   classe: any
   persone: any[] = []
   i : any
-  constructor(private prendi: PrendiDatiService, private route: ActivatedRoute) {
+  constructor(private prendi: PrendiDatiService, private route: ActivatedRoute, private arr:ArrayServiceService) {
     this.route.params.subscribe(params => {
        this.classeId = params['id'];
     });
@@ -47,6 +48,7 @@ export class ClasseComponent{
       this.studentiClasse = a.filter((studente: any) => studente.classe === this.classeS);
       this.filteredArray = this.studentiClasse
       this.prendiPersone()
+      this.arr.inizializzaStudentiClasse(this.studentiClasse)
   }
 
   searchQuery: string = '';
@@ -80,6 +82,13 @@ toggleStudentSelection(student: any): void {
     }
   }
 }
+
+modalChiuso(){
+  console.log(this.studentiClasse)
+  this.studentiClasse = this.arr.prendiStudentiClasse()
+  console.log(this.studentiClasse)
+  this.filteredArray = this.studentiClasse
+ }
 
 
 }

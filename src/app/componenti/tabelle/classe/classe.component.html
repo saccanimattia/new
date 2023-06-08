@@ -13,7 +13,7 @@
     <thead>
       <tr>
         <th *ngIf="selectedStudents.length > 0">
-          <app-input-elimina-studente [classeFrequentata]="classe.name" [students]="selectedStudents"></app-input-elimina-studente>
+          <app-input-elimina-studente [classeFrequentata]="classe.name" [students]="selectedStudents" (buttonClick)="modalChiuso()"></app-input-elimina-studente>
         </th>
         <th *ngIf="selectedStudents.length == 0"></th>
         <th>Nome</th>
@@ -22,10 +22,10 @@
           <span>Data di nascita</span>
 
           <div class="input-row">
-            <app-input-nuovo-studente [classeFrequentata]="classe.name"></app-input-nuovo-studente>
+            <app-input-nuovo-studente [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-nuovo-studente>
           </div>
           <div class="input-row">
-            <app-input-update-studente [classeFrequentata]="classe.name"></app-input-update-studente>
+            <app-input-update-studente [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-update-studente>
           </div>
         </th>
       </tr>

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
+import { ArrayServiceService } from '../../../servizi/array-service.service';
 
 @Component({
   selector: 'app-input-elimina-classe',
@@ -8,10 +9,11 @@ import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 })
 export class InputEliminaClasseComponent {
   @Input() classes: any[] = []
+  @Output() buttonClick = new EventEmitter<void>();
   filteredArray: any[] = []
   i: any
   searchQuery: any
-  constructor(private servizio: PrendiDatiService) {}
+  constructor(private servizio: PrendiDatiService, private arr: ArrayServiceService) {}
 
 
   openModale() {
@@ -27,7 +29,7 @@ export class InputEliminaClasseComponent {
     const modal = document.querySelector('.modalElimina');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
-    window.location.reload();
+    this.buttonClick.emit();
   }
 
 
@@ -36,9 +38,12 @@ export class InputEliminaClasseComponent {
   }
 
   deleteClasses(): void {
+    console.log(this.classes)
     for(let classe of this.classes){
       this.elimina(classe);
     }
+    console.log(this.classes)
+    this.arr.eliminaClassi(this.classes)
     this.closeModale();
   }
 
