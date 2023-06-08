@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
+import { ArrayServiceService } from '../../../servizi/array-service.service';
 
 @Component({
   selector: 'app-input-update-classi',
@@ -14,9 +15,9 @@ export class InputUpdateClassiComponent {
   classeB:any = {
     name: 'nome classe',
   };
-
+  @Output() buttonClick = new EventEmitter<void>();
   @Input() classeFrequentata: any
-  constructor(private servizio: PrendiDatiService) {}
+  constructor(private servizio: PrendiDatiService, private arr: ArrayServiceService) {}
 
   openModalee() {
     const modal = document.querySelector('.modalUpdate');
@@ -28,7 +29,7 @@ export class InputUpdateClassiComponent {
     const modal = document.querySelector('.modalUpdate');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
-    window.location.reload();
+    this.buttonClick.emit();
   }
 
   saveClass() {
@@ -37,7 +38,11 @@ export class InputUpdateClassiComponent {
   }
 
   aggiorna(){
+    console.log(this.classeA.name)
     this.classeA.id = this.servizio.classeToId(this.classeA.name)
+
     this.servizio.updateClasse(this.classeB, this.servizio.classeToId(this.classeA.name))
+    this.arr.updateClassi(this.classeA, this.classeB)
   }
 }
+

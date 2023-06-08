@@ -1,5 +1,7 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
+import { ArrayServiceService } from '../../../servizi/array-service.service';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -25,9 +27,11 @@ export class InputUpdateAllStudentiComponent {
     birthDate: 'data di nascita'
   };
 
+  @Output() buttonClick = new EventEmitter<void>();
 
 
-  constructor(private servizio: PrendiDatiService) {}
+
+  constructor(private servizio: PrendiDatiService, private arr : ArrayServiceService, private datePipe : DatePipe) {}
 
   openModalee() {
     const modal = document.querySelector('.modalUpdate');
@@ -39,7 +43,7 @@ export class InputUpdateAllStudentiComponent {
     const modal = document.querySelector('.modalUpdate');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
-    window.location.reload();
+    this.buttonClick.emit();
   }
 
   saveClass() {
@@ -48,7 +52,8 @@ export class InputUpdateAllStudentiComponent {
   }
 
   aggiorna(){
-    this.studenteB.birthDate = new Date(this.studenteB.birthDate)
+    this.studenteB.birthDate = this.datePipe.transform(this.studenteB.birthDate, 'yyyy-MM-dd HH:mm:ss.SSS');
+    this.arr.updateStudenteClasse(this.studenteA, this.studenteB)
     if(this.studenteA.classe != '')
       this.studenteA.classe = this.servizio.classeToId(this.studenteA.classe)
     if(this.studenteB.classe != '')

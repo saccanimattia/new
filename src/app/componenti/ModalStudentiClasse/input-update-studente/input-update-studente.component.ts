@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
+import { DatePipe } from '@angular/common';
+import { ArrayServiceService } from '../../../servizi/array-service.service';
 
 @Component({
   selector: 'app-input-update-studente',
@@ -20,9 +22,9 @@ export class InputUpdateStudenteComponent {
     classe: 'classe',
     birthDate: 'data di nascita'
   };
-
+  @Output() buttonClick = new EventEmitter<void>();
   @Input() classeFrequentata: any
-  constructor(private servizio: PrendiDatiService) {}
+  constructor(private servizio: PrendiDatiService, private arr : ArrayServiceService, private datePipe : DatePipe) {}
 
   openModalee() {
     const modal = document.querySelector('.modalUpdate');
@@ -34,7 +36,7 @@ export class InputUpdateStudenteComponent {
     const modal = document.querySelector('.modalUpdate');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
-    window.location.reload();
+    this.buttonClick.emit();
   }
 
   saveClass() {
@@ -43,6 +45,8 @@ export class InputUpdateStudenteComponent {
   }
 
   aggiorna(){
+    this.studenteB.birthDate = this.datePipe.transform(this.studenteB.birthDate, 'yyyy-MM-dd HH:mm:ss.SSS');
+    this.arr.updateAllStudenti(this.studenteA, this.studenteB)
     this.studenteA.birthDate = new Date(this.studenteA.birthDate)
     this.studenteB.birthDate = new Date(this.studenteB.birthDate)
     this.studenteB.classe = this.servizio.classeToId(this.studenteB.classe)

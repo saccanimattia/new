@@ -18,7 +18,7 @@ import { InputEliminaClasseComponent } from './componenti/ModalClassi/input-elim
 import { InputUpdateClassiComponent } from './componenti/ModalClassi/input-update-classi/input-update-classi.component';
 import { InputUpdateAllStudentiComponent } from './componenti/ModalAllStudenti/input-update-all-studenti/input-update-all-studenti.component';
 import { InputEliminaAllStudentiComponent } from './componenti/ModalAllStudenti/input-elimina-all-studenti/input-elimina-all-studenti.component';
-
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,7 @@ import { InputEliminaAllStudentiComponent } from './componenti/ModalAllStudenti/
     FormsModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,12 +12,14 @@ export class InputCreaClasseComponent{
   classe: any = {
     name: 'nome della classe'
   };
+  o : any
   @Output() buttonClick = new EventEmitter<void>();
   constructor(private servizio: PrendiDatiService, private arr: ArrayServiceService) {}
 
 
 
   openModal() {
+    this.classe = {name: 'nome della classe'}
     const modal = document.querySelector('.modal');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
@@ -38,6 +40,7 @@ export class InputCreaClasseComponent{
 
   creaClasse() {
     this.servizio.creaNuovaClasse(this.classe);
-    this.arr.aggiungiClasse(this.classe)
+    this. o = this.classe
+    this.arr.aggiungiClasse(this.o)
   }
 }
