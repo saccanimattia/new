@@ -19,7 +19,6 @@ import { InputUpdateClassiComponent } from './componenti/ModalClassi/input-updat
 import { InputUpdateAllStudentiComponent } from './componenti/ModalAllStudenti/input-update-all-studenti/input-update-all-studenti.component';
 import { InputEliminaAllStudentiComponent } from './componenti/ModalAllStudenti/input-elimina-all-studenti/input-elimina-all-studenti.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
