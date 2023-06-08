@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
+import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 
 @Component({
   selector: 'app-input-nuovo-all-studenti',
@@ -30,6 +30,7 @@ export class InputNuovoAllStudentiComponent {
     const modal = document.querySelector('.modalAllStudenti');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
+    window.location.reload();
   }
 
 

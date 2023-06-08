@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PocketBaseService } from 'src/app/servizi/pocket-base-service.service';
+import { PocketBaseService } from '../../../servizi/pocket-base-service.service'
 import { Subscription } from 'rxjs';
 
 

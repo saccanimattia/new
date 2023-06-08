@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
+import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 
 @Component({
   selector: 'app-input-elimina-classe',
@@ -27,6 +27,7 @@ export class InputEliminaClasseComponent {
     const modal = document.querySelector('.modalElimina');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
+    window.location.reload();
   }
 
 

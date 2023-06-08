@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
+import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 
 @Component({
   selector: 'app-input-update-studente',
@@ -34,6 +34,7 @@ export class InputUpdateStudenteComponent {
     const modal = document.querySelector('.modalUpdate');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
+    window.location.reload();
   }
 
   saveClass() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PrendiDatiService } from 'src/app/servizi/prendi-dati.service';
+import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 
 
 @Component({
@@ -26,6 +26,7 @@ export class InputCreaClasseComponent{
     const modal = document.querySelector('.modal');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
+    window.location.reload();
   }
 
   saveClass() {
