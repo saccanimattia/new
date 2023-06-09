@@ -16,6 +16,7 @@ export class InputNuovoAllStudentiComponent {
     birthDate: 'data di nascita'
   };
   o: any;
+  classi : any[] = []
   @Output() buttonClick = new EventEmitter<void>();
   constructor(private servizio:PrendiDatiService, private arr : ArrayServiceService, private datePipe : DatePipe){}
 
@@ -28,6 +29,7 @@ export class InputNuovoAllStudentiComponent {
     const modal = document.querySelector('.modalAllStudenti');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
+    this.prendiClassi()
   }
 
   closeModal() {
@@ -37,15 +39,26 @@ export class InputNuovoAllStudentiComponent {
     this.buttonClick.emit();
   }
 
+  async prendiClassi(): Promise<void> {
+    try {
+
+      let quarte: any = await this.servizio.prendiClassi();
+      this.classi = quarte.items as any[]
+    } catch (err) {
+      console.log("Si è verificato un errore:", err);
+    }
+  }
+
 
   saveClass() {
+    this.studente.birthDate = this.datePipe.transform(this.studente.birthDate, 'yyyy-MM-dd HH:mm:ss.SSS')
+    this.o = this.studente
+    console.log(this.o)
+    console.log(this.classi)
+    this.arr.aggiungiAllStudenti(this.o)
     if(this.studente.classe != '')
       this.studente.classe = this.servizio.classeToId(this.studente.classe)
-    this.studente.birthDate = this.datePipe.transform(this.studente.birthDate, 'yyyy-MM-dd HH:mm:ss.SSS');
-    this.servizio.creaNuovoStudente(this.studente)
-    this.studente.birthDate = this.studente.birthDate
-    this.o = this.studente
-    this.arr.aggiungiAllStudenti(this.o)
+      this.servizio.creaNuovoStudente(this.studente)
     this.closeModal();
   }
 

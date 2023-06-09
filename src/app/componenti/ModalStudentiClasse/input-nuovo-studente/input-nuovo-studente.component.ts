@@ -32,6 +32,7 @@ export class InputNuovoStudenteComponent{
 
 
   openModal() {
+    this.studente = {name: 'nome', surname: 'cognome',classe: 'classe',birthDate: 'data di nascita'}
     this.prendiStudenti()
     this.selectedStudents.length = 0;
     const modal = document.querySelector('.modalNuovo');
@@ -56,7 +57,10 @@ export class InputNuovoStudenteComponent{
       this.arr.aggiungiStudentiClasse(this.selectedStudents)
       this.servizio.creaNuovoStudente(this.studente)
     } else if (this.selectedOption === 'existing') {
+
       this.modifica()
+      console.log(this.selectedStudents)
+
       }
 
 
@@ -81,6 +85,7 @@ modifica(){
     stud.classe = this.servizio.classeToId(this.classeFrequentata)
     this.servizio.updateStudente(stud, s)
   }
+  this.arr.updateStudenteClasseCrea(this.selectedStudents, this.classeFrequentata)
 }
 
 cambiaOpzione(){

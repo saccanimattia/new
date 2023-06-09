@@ -91,10 +91,30 @@ export class AllStudentiComponent {
     }
 
     modalChiuso(){
-      console.log(this.studentiClasse)
+
+            console.log(this.studentiClasse)
       this.studentiClasse = this.arr.prendiAllStudenti()
       console.log(this.studentiClasse)
+
+      this.trasformaNuoveClassi()
+      console.log(this.studentiClasse)
       this.filteredArray = this.studentiClasse
+      this.selectedStudents = [];
+     }
+
+
+     trasformaNuoveClassi(){
+      console.log("ciao")
+      console.log(this.cl)
+      for(let s of this.studentiClasse){
+        console.log(isNaN(parseInt(s.classe.charAt(0), 10)))
+        if(parseInt(s.classe.charAt(0), 10) ){
+          console.log("IUJTB3GNOIGJNP42")
+          s.classe = this.prendi.idToClass(s.classe, this.cl)
+          console.log(s.classe)
+        }
+
+      }
      }
 }
 

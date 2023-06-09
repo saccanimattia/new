@@ -100,6 +100,7 @@ export class TabellaClassiQuarteComponent implements OnInit{
    modalChiuso(){
     this.classiQuarte = this.arr.prendiClassi()
     this.filteredArray = this.classiQuarte
+    this.selectedClasses = []
    }
 }
 

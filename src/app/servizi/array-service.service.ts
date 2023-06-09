@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PrendiDatiService } from './prendi-dati.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ArrayServiceService {
   allStudenti:any[] = []
   studentiClasse:any[] = []
   classi:any[] = []
-  constructor() { }
+  constructor(private servizio: PrendiDatiService) { }
 
   inizializzaAllStudenti(x:any[]){
     this.allStudenti = x
@@ -85,7 +86,13 @@ export class ArrayServiceService {
   }
 
   aggiungiAllStudenti(x:any){
+    console.log("agg")
+    console.log(x)
     this.allStudenti.push(x);
+    console.log("agg")
+    console.log(this.allStudenti)
+    console.log(this.allStudenti[this.allStudenti.length-1])
+
   }
 
   aggiungiStudentiClasse(x:any){
@@ -110,50 +117,54 @@ export class ArrayServiceService {
   }
 
   updateAllStudenti(x:any, xx:any){
+    console.log("y")
+    console.log(x)
+    console.log("xx")
+    console.log(xx)
     let isUp = false;
+    console.log(x)
+    console.log(xx)
     this.allStudenti = this.allStudenti.filter(item => {
-        if(item.name == x.name && item.surname == x.surname && item.classe == x.classe && isUp == false){
+      console.log(item)
+        if((item.name == x.name && item.surname == x.surname) && isUp == false){
           console.log("qwertyuiop")
           isUp = true;
           item.name = xx.name
           item.surname = xx.surname
           item.classe = xx.classe
-          item.dateBirth = xx.name
+          item.dateBirth = xx.dateBirth
           console.log(item.name)
-          return item;
+          console.log(item.surname)
+          return xx;
       }
       return true;
     });
+    console.log("this.allStudenti")
     console.log(this.allStudenti)
   }
 
   updateStudenteClasse(x:any, xx:any){
     let isUp = false;
-    console.log(x)
-    console.log(xx)
+
     this.studentiClasse = this.studentiClasse.filter(item => {
-        if(item.name == x.name && item.surname == x.surname && item.classe == x.classe && isUp == false){
+      console.log(item)
+        if((item.name == x.name && item.surname == x.surname) && isUp == false){
           console.log("qwertyuiop")
           isUp = true;
           item.name = xx.name
           item.surname = xx.surname
           item.classe = xx.classe
-          item.dateBirth = xx.name
+          item.dateBirth = xx.dateBirth
           console.log(item.name)
           console.log(item.surname)
-          return item;
+          return xx;
       }
       return true;
     });
-    console.log(this.studentiClasse)
   }
 
   updateStudenteClasseCrea(x:any[], classe:any){
-    for(let xx of x){
-      let y = xx;
-      xx.classe = classe;
-      this.updateStudenteClasse(y, xx)
-    }
+    this.aggiungiStudentiClasse(x)
   }
 
 
