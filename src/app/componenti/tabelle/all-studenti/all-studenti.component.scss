@@ -10,11 +10,14 @@
 
   .table {
     margin: auto;
+    max-width: 100%; /* Aggiungi questa proprietà per rendere la tabella responsive */
+    overflow-x: auto; /* Aggiungi questa proprietà per consentire lo scorrimento orizzontale sulla tabella */
   }
 
   .custom-table {
     border-collapse: collapse;
     table-layout: fixed;
+    width: 100%; /* Imposta la larghezza della tabella al 100% per renderla responsive */
 
     th, td {
       padding: 8px;
@@ -67,8 +70,30 @@
 }
 
 .input-row {
-  margin-left: 10px; /* Aggiusta il margine a sinistra come desiderato */
+  margin-left: 10px;
 }
+
 .first-column {
   width: 50px;
+}
+
+@media (max-width: 768px) {
+  /* Aggiungi stili specifici per dispositivi con una larghezza massima di 768px */
+  .studenti-container {
+    h1 {
+      font-size: 20px;
+    }
+
+    .search-form {
+      .form-control {
+        width: 150px;
+      }
+    }
+  }
+
+  .custom-table {
+    th, td {
+      padding: 6px;
+    }
+  }
 }
