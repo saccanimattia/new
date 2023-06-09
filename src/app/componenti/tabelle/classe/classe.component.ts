@@ -1,8 +1,9 @@
 
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 import { ActivatedRoute } from '@angular/router';
 import { ArrayServiceService } from '../../../servizi/array-service.service';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-classe',
@@ -18,6 +19,8 @@ export class ClasseComponent{
   classe: any
   persone: any[] = []
   i : any
+  s: any[] =[]
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private prendi: PrendiDatiService, private route: ActivatedRoute, private arr:ArrayServiceService) {
     this.route.params.subscribe(params => {
        this.classeId = params['id'];
@@ -48,6 +51,7 @@ export class ClasseComponent{
       let a:any = await this.prendi.prendiStudenti()
       this.studentiClasse = a.filter((studente: any) => studente.classe === this.classeS);
       this.filteredArray = this.studentiClasse
+      this.s = this.filteredArray.slice(0, 5);
       this.prendiPersone()
       this.arr.inizializzaStudentiClasse(this.studentiClasse)
   }
@@ -94,5 +98,13 @@ modalChiuso(){
   this.selectedStudents = [];
  }
 
+ onPageChange(event: PageEvent) {
+  this.paginator.pageIndex = event.pageIndex;
+  this.paginator.pageSize = event.pageSize;
+  const startIndex = event.pageIndex * event.pageSize;
+  const endIndex = startIndex + event.pageSize;
+  this.s = this.filteredArray.slice(startIndex, endIndex);
+  // Puoi aggiornare i dati visualizzati in base alla pagina corrente qui
+}
 
 }

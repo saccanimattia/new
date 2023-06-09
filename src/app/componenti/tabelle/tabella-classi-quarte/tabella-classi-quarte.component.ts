@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PocketBaseService } from '../../../servizi/pocket-base-service.service'
 import { Subscription } from 'rxjs';
 import { ArrayServiceService } from '../../../servizi/array-service.service';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 
 declare var window : any
@@ -23,7 +24,8 @@ export class TabellaClassiQuarteComponent implements OnInit{
   x:any
   searchQuery: string = '';
   filteredArray: any[] = [];
-
+  classi: any[] = [];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private prendi: PrendiDatiService, private router : Router, private pocketBaseService: PocketBaseService, private arr:ArrayServiceService) {
 
   }
@@ -54,6 +56,7 @@ export class TabellaClassiQuarteComponent implements OnInit{
       let quarte: any = await this.prendi.prendiClassi();
       this.classiQuarte = quarte.items as any[]
       this.filteredArray = this.classiQuarte
+      this.classi = this.filteredArray.slice(0, 5);
       this.arr.inizializzaClassi(this.classiQuarte)
     } catch (err) {
       console.log("Si è verificato un errore:", err);
@@ -102,6 +105,15 @@ export class TabellaClassiQuarteComponent implements OnInit{
     this.filteredArray = this.classiQuarte
     this.selectedClasses = []
    }
+
+   onPageChange(event: PageEvent) {
+    this.paginator.pageIndex = event.pageIndex;
+    this.paginator.pageSize = event.pageSize;
+    const startIndex = event.pageIndex * event.pageSize;
+    const endIndex = startIndex + event.pageSize;
+    this.classi = this.filteredArray.slice(startIndex, endIndex);
+    // Puoi aggiornare i dati visualizzati in base alla pagina corrente qui
+  }
 }
 
 

@@ -2,50 +2,60 @@
   <h1>TUTTI GLI STUDENTI</h1>
 
   <div class="search-form">
-    <form class="form-inline">
-      <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
-      </div>
-    </form>
+      <form class="form-inline">
+          <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+          </div>
+      </form>
   </div>
 
+  <div class="mat-elevation-z8">
+      <table class="table table-striped custom-table">
+          <thead>
+              <tr>
+                  <th *ngIf="selectedStudents.length > 0" class="first-column">
+                      <app-input-elimina-all-studenti [students]="selectedStudents" (buttonClick)="modalChiuso()"></app-input-elimina-all-studenti>
+                  </th>
+                  <th *ngIf="selectedStudents.length == 0" class="first-column"></th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Cognome</th>
+                  <th scope="col">Data di nascita</th>
+                  <th class="d-flex align-items-center justify-content-between" scope="col">
+                      <span>Classe</span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
 
-  <table class="table table-striped custom-table">
-    <thead>
-      <tr>
-        <th *ngIf="selectedStudents.length > 0" class="first-column">
-          <app-input-elimina-all-studenti [students]="selectedStudents"  (buttonClick)="modalChiuso()"></app-input-elimina-all-studenti>
-        </th>
-        <th *ngIf="selectedStudents.length == 0" class="first-column"></th>
-        <th scope="col">Nome</th>
-        <th scope="col">Cognome</th>
-        <th scope="col">Data di nascita</th>
-        <th class="d-flex align-items-center justify-content-between" scope="col">
-          <span>Classe</span>
-
-          <div class="input-row">
-            <app-input-nuovo-all-studenti (buttonClick)="modalChiuso()"></app-input-nuovo-all-studenti>
-          </div>
-          <div class="input-row">
-            <app-input-update-all-studenti (buttonClick)="modalChiuso()"></app-input-update-all-studenti>
-          </div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let alunno of filteredArray">
-        <td class="first-column">
-          <input type="checkbox" [(ngModel)]="alunno.selected" (change)="toggleStudentSelection(alunno)">
-        </td>
-        <td>{{ alunno.name }}</td>
-        <td>{{ alunno.surname }}</td>
-        <td>{{ alunno.birthDate }}</td>
-        <td>{{ alunno.classe }}</td>
-      </tr>
-    </tbody>
-  </table>
+                      <div class="input-row">
+                          <app-input-nuovo-all-studenti (buttonClick)="modalChiuso()"></app-input-nuovo-all-studenti>
+                      </div>
+                      <div class="input-row">
+                          <app-input-update-all-studenti (buttonClick)="modalChiuso()"></app-input-update-all-studenti>
+                      </div>
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let alunno of studentiVisualizzati">
+                  <td class="first-column">
+                      <input type="checkbox" [(ngModel)]="alunno.selected" (change)="toggleStudentSelection(alunno)">
+                  </td>
+                  <td>{{ alunno.name }}</td>
+                  <td>{{ alunno.surname }}</td>
+                  <td>{{ alunno.birthDate }}</td>
+                  <td>{{ alunno.classe }}</td>
+              </tr>
+          </tbody>
+      </table>
+      <mat-paginator [length]="studentiClasse.length"
+               [pageSizeOptions]="[5, 10]"
+               showFirstLastButtons
+               aria-label="Select page of periodic elements"
+               (page)="onPageChange($event)">
+</mat-paginator>
+  </div>
 </div>
-
 <ng-template #noStudenti>
   <p class="no-studenti">Non sono presenti studenti</p>
 </ng-template>

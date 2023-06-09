@@ -19,6 +19,11 @@ import { InputUpdateClassiComponent } from './componenti/ModalClassi/input-updat
 import { InputUpdateAllStudentiComponent } from './componenti/ModalAllStudenti/input-update-all-studenti/input-update-all-studenti.component';
 import { InputEliminaAllStudentiComponent } from './componenti/ModalAllStudenti/input-elimina-all-studenti/input-elimina-all-studenti.component';
 import { DatePipe } from '@angular/common';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './componenti/home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,13 +40,17 @@ import { DatePipe } from '@angular/common';
     InputUpdateClassiComponent,
     InputUpdateAllStudentiComponent,
     InputEliminaAllStudentiComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

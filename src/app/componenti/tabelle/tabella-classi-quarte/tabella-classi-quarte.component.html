@@ -7,7 +7,7 @@
     </div>
   </form>
 </div>
-
+<div class="mat-elevation-z8">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -57,7 +57,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let classe of filteredArray; let i = index">
+    <tr *ngFor="let classe of classi; let i = index">
       <td class="checkbox-cell">
         <label>
           <div class="d-flex align-items-center" (click)="visualizza(classe, i)">
@@ -77,6 +77,13 @@
   <tfoot>
   </tfoot>
 </table>
+<mat-paginator [length]="filteredArray.length"
+[pageSizeOptions]="[5, 10]"
+showFirstLastButtons
+aria-label="Select page of periodic elements"
+(page)="onPageChange($event)">
+</mat-paginator>
+</div>
 
 
 <div *ngIf="isClasse">
