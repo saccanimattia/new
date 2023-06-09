@@ -31,14 +31,14 @@
           </div>
         </div>
         <div *ngIf="selectedOption === 'existing'">
-          <div class="search-form">
-            <form class="form-inline">
-              <div class="form-group">
-                <input type="text" class="form-control"  [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
-              </div>
-            </form>
-          </div>
           <div *ngIf="items.length!=0">
+            <div class="search-form">
+              <form class="form-inline">
+                <div class="form-group">
+                  <input type="text" class="form-control"  [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+                </div>
+              </form>
+            </div>
             <div class="table-container">
             <table class="student-table">
               <thead>

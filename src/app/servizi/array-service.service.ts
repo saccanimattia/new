@@ -53,16 +53,21 @@ export class ArrayServiceService {
   }
 
   eliminaStudentiClasse(x:any[]){
+    console.log(x)
     for(let xx of x){
+      console.log(xx)
       let isElim = false;
       this.studentiClasse = this.studentiClasse.filter(item => {
-      if(item == xx && isElim == false){
+      if(item.name == xx.name && item.surname == xx.surname && isElim == false){
+        console.log("fatto")
         isElim = true;
         return false;
       }
       return true;
     });
     }
+    console.log(this.studentiClasse)
+    return this.studentiClasse
   }
 
   eliminaClassi(x:any[]){
@@ -157,10 +162,16 @@ export class ArrayServiceService {
           item.dateBirth = xx.dateBirth
           console.log(item.name)
           console.log(item.surname)
-          return xx;
+          if(x.classe != xx.classe){
+            return false;
+          }
+          else{
+            return xx;
+          }
       }
       return true;
     });
+    console.log(this.studentiClasse)
   }
 
   updateStudenteClasseCrea(x:any[], classe:any){
