@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import PocketBase from 'pocketbase';
+import { MatTable } from '@angular/material/table';
+import { MatRowDef } from '@angular/material/table';
 
 @Injectable({
   providedIn: 'root'
