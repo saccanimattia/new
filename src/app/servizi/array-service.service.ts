@@ -38,16 +38,20 @@ export class ArrayServiceService {
 
 
   eliminaAllStudenti(x:any[]){
+    console.log(x)
+    console.log("x")
     for(let xx of x){
       let isElim = false;
     this.allStudenti = this.allStudenti.filter(item => {
-      if(item.name != xx.name && item.surname != xx.surname && item.classe != xx.classe && item.birthDate != xx.birthDate && isElim == false){
+      if(item.name == xx.name && item.surname == xx.surname && item.classe == xx.classe && item.birthDate == xx.birthDate && isElim == false){
         isElim = true;
-        return true;
+        return false;
       }
-      return false;
+      return true;
     });
     }
+    console.log("allStudenti")
+    console.log(this.allStudenti)
   }
 
   eliminaStudentiClasse(x:any[]){

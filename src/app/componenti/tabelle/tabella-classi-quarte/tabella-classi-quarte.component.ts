@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { PocketBaseService } from '../../../servizi/pocket-base-service.service';
 import { Subscription } from 'rxjs';
 import { ArrayServiceService } from '../../../servizi/array-service.service';
@@ -34,7 +34,8 @@ export class TabellaClassiQuarteComponent implements OnInit {
     private prendi: PrendiDatiService,
     private router: Router,
     private pocketBaseService: PocketBaseService,
-    private arr: ArrayServiceService
+    private arr: ArrayServiceService,
+
   ) {}
 
   ngOnInit(): void {
@@ -131,13 +132,16 @@ export class TabellaClassiQuarteComponent implements OnInit {
     this.classi.forEach(classe => {
       classe.selected = false;
     });
+    this.isSelected = false
   }
 
   gestisciSelezioneTutti() {
-    if (this.selectedClasses.length === this.classi.length) {
+    if (this.selectedClasses.length === this.classi.length  || this.isSelected === true) {
       this.deselezionaTutti();
     } else {
       this.selezionaTutti();
     }
   }
+
+
 }

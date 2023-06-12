@@ -102,7 +102,8 @@ export class AllStudentiComponent {
     modalChiuso(){
 
       this.studentiClasse = this.arr.prendiAllStudenti()
-
+      console.log("this.studentiClasse")
+      console.log(this.studentiClasse)
       this.trasformaNuoveClassi()
       this.filteredArray = this.studentiClasse
       this.studentiVisualizzati = this.filteredArray.slice(0,this.paginator.pageSize)
@@ -111,10 +112,9 @@ export class AllStudentiComponent {
 
 
      trasformaNuoveClassi(){
-      console.log(this.cl)
       for(let s of this.studentiClasse){
-        console.log(isNaN(parseInt(s.classe.charAt(0), 10)))
-        if(parseInt(s.classe.charAt(0), 10) ){
+        console.log()
+        if(isNaN(parseInt(s.classe.charAt(0), 10)) || s.classe != ''){
           s.classe = this.prendi.idToClass(s.classe, this.cl)
         }
 
@@ -182,10 +182,11 @@ export class AllStudentiComponent {
       this.studentiVisualizzati.forEach(st => {
         st.selected = false;
       });
+      this.isSelected = false
     }
 
     gestisciSelezioneTutti() {
-      if (this.selectedStudents.length === this.studentiVisualizzati.length) {
+      if (this.selectedStudents.length === this.studentiVisualizzati.length || this.isSelected === true) {
         this.deselezionaTutti();
       } else {
         this.selezionaTutti();

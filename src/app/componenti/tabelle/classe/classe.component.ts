@@ -154,10 +154,11 @@ deselezionaTutti() {
   this.s.forEach(st => {
     st.selected = false;
   });
+  this.isSelected = false
 }
 
 gestisciSelezioneTutti() {
-  if (this.selectedStudents.length === this.s.length) {
+  if (this.selectedStudents.length === this.s.length  || this.isSelected === true) {
     this.deselezionaTutti();
   } else {
     this.selezionaTutti();

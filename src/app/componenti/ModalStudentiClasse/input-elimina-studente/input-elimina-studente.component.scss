@@ -40,3 +40,10 @@
       height: 100px;
     }
   }
+
+
+  .modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+
+  }

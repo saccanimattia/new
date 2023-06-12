@@ -30,3 +30,10 @@
   left: 0;
   z-index: 1050;
   overflow: auto;}
+
+
+  .modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+
+  }

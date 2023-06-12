@@ -30,7 +30,7 @@ export class InputEliminaAllStudentiComponent {
     const modal = document.querySelector('#mE');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
-    window.location.reload();
+    this.buttonClick.emit();
   }
 
 
@@ -47,6 +47,7 @@ export class InputEliminaAllStudentiComponent {
     }
     this.arr.eliminaAllStudenti(this.students)
     this.closeModale();
+    console.log(this.students)
 
   }
 
