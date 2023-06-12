@@ -1,90 +1,68 @@
 <h1>TUTTE LE CLASSI</h1>
 
-<div class="search-form">
-  <form class="form-inline">
-    <div class="form-group">
+<div class="search-form d-flex mb-4">
+  <form class="form-inline row w-100">
+    <div class="form-group col-lg-8 col-md-6 col-sm-12">
       <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+    </div>
+
+    <div class="col-lg-2 col-md-3 col-sm-6">
+      <div class="input-row">
+        <app-input-crea-classe (buttonClick)="modalChiuso()"></app-input-crea-classe>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-3 col-sm-6">
+      <div class="input-row">
+        <app-input-update-classi (buttonClick)="modalChiuso()"></app-input-update-classi>
+      </div>
     </div>
   </form>
 </div>
-<div class="mat-elevation-z8">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col" class="checkbox-header">
-        <div *ngIf="selectedClasses.length > 0">
-          <app-input-elimina-classe [classes]="selectedClasses" (buttonClick)="modalChiuso()"></app-input-elimina-classe>
-        </div>
-        <div *ngIf="selectedClasses.length == 0"></div>
-      </th>
-      <th scope="col" class="d-flex align-items-center justify-content-between">
-        <span>Classe<i class="bi bi-sort-alpha-down" (click)="ordinaClassi()"></i></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
 
-        <div class="input-row">
-          <app-input-crea-classe (buttonClick)="modalChiuso()"></app-input-crea-classe>
-        </div>
-
-        <div class="input-row">
-          <app-input-update-classi (buttonClick)="modalChiuso()"></app-input-update-classi>
-        </div>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let classe of classi; let i = index">
-      <td class="checkbox-cell">
-        <label>
-          <div class="d-flex align-items-center" (click)="visualizza(classe, i)">
-            <input type="checkbox" [(ngModel)]="classe.selected" (click)="$event.stopPropagation()" (change)="toggleSelected(classe)">
+<div class="mat-elevation-z8 ">
+  <div class="table-container">
+  <table class="table table-striped">
+    <thead >
+      <tr>
+        <th scope="col" class="checkbox-header align-items-center">
+          <div class="align-self-start">
+            <div *ngIf="selectedClasses.length > 0" >
+              <app-input-elimina-classe [classes]="selectedClasses" (buttonClick)="modalChiuso()"></app-input-elimina-classe>
+            </div>
           </div>
-        </label>
-      </td>
-      <td>
-        <label>
-          <div class="d-flex align-items-center" (click)="visualizza(classe, i)">
-            <span>{{ classe.name }}</span>
+          <div *ngIf="selectedClasses.length == 0">
+            <span style="color:white; font-size:1px">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span>
           </div>
-        </label>
-      </td>
-    </tr>
-  </tbody>
-  <tfoot>
-  </tfoot>
-</table>
-<mat-paginator [length]="filteredArray.length"
-[pageSizeOptions]="[5, 10]"
-showFirstLastButtons
-aria-label="Select page of periodic elements"
-(page)="onPageChange($event)">
-</mat-paginator>
+        </th>
+        <th scope="col">
+          <span>Classe<i [class]="ord" (click)="ordina()"></i></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let classe of classi; let i = index">
+        <td class="checkbox-cell">
+          <label>
+            <div class="d-flex align-items-center" (click)="visualizza(classe, i)">
+              <input type="checkbox" [(ngModel)]="classe.selected" (click)="$event.stopPropagation()" (change)="toggleSelected(classe)">
+            </div>
+          </label>
+        </td>
+        <td>
+          <label>
+            <div class="d-flex align-items-center" (click)="visualizza(classe, i)">
+              <span>{{ classe.name }}</span>
+            </div>
+          </label>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot></tfoot>
+  </table>
+  </div>
+  <mat-paginator [length]="filteredArray.length" [pageSizeOptions]="[5, filteredArray.length]" showFirstLastButtons aria-label="Select page of periodic elements" (page)="onPageChange($event)"></mat-paginator>
 </div>
-
 
 <div *ngIf="isClasse">
   <app-classe></app-classe>

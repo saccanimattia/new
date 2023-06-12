@@ -1,17 +1,22 @@
-<div class="circle-button">
-  <button type="button" class="btn btn-primary"(click)="openModale()">
-    <i class="bi bi-dash-circle"></i>
+<div class="circle-button d-flex ">
+  <button type="button" class="btn btn-sm btn-danger"  (click)="openModale()">
+    <i class="bi bi-dash-circle bi-xs"></i>
   </button>
 </div>
 
+
+
+
+
+
 <!-- Modal -->
-<div class="modalElimina" tabindex="-1" role="dialog">
+<div class="modal" tabindex="-1" role="dialog" id="d">
   <div class="modal-dialog centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Elimina classe/classi<button type="button" class="close" (click)="closeModale()">
+      <div class="modal-header  d-flex justify-content-between align-items-start">
+        <h2 class="modal-title">Elimina classe/classi</h2><button type="button" class="close" (click)="closeModale()">
           <span aria-hidden="true">&times;</span>
-        </button></h2>
+        </button>
       </div>
       <div class="modal-body">
         <div class="search-form">
@@ -22,7 +27,7 @@
           </form>
         </div>
         <div class="table-container">
-        <table class="student-table">
+        <table class="table student-table">
           <thead>
             <tr>
 

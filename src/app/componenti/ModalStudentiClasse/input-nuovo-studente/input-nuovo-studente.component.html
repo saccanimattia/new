@@ -1,17 +1,17 @@
 <div class="circle-button">
   <button type="button" class="btn btn-primary" (click)="openModal()">
-    <i class="bi bi-plus"></i>
+    <i class="bi bi-plus"></i>Add Students
   </button>
 </div>
 
-<div class="modalNuovo" tabindex="-1" role="dialog" >
+<div class="modal" tabindex="-1" role="dialog" id="mUC">
   <div class="modal-dialog centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Aggiungi studente/i <button type="button" class="close" (click)="closeModal()">
+      <div class="modal-header d-flex justify-content-between align-items-start">
+        <h2 class="modal-title">Aggiungi studente/i</h2>
+        <button type="button" class="close" (click)="closeModal()">
           <span aria-hidden="true">&times;</span>
-        </button></h2>
-
+        </button>
       </div>
       <div class="modal-body">
         <div *ngIf="selectedOption === 'new'">
@@ -40,7 +40,7 @@
               </form>
             </div>
             <div class="table-container">
-            <table class="student-table">
+            <table class="table student-table">
               <thead>
                 <tr>
                   <th></th>

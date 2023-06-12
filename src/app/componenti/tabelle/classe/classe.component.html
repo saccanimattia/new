@@ -1,33 +1,39 @@
 <div *ngIf="studentiClasse.length !== 0; else noStudenti" class="studenti-container">
   <h1>{{ classe.name }}</h1>
 
-  <div class="search-form">
-    <form class="form-inline">
-      <div class="form-group">
+  <div class="search-form d-flex mb-4">
+    <form class="form-inline row w-100">
+      <div class="form-group col-lg-8 col-md-6 col-sm-12">
         <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+      </div>
+
+      <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="input-row">
+          <app-input-nuovo-studente class="x"  [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-nuovo-studente>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="input-row">
+          <app-input-update-studente class="x"  [classeFrequentata]="classe.name"(buttonClick)="modalChiuso()"></app-input-update-studente>
+        </div>
       </div>
     </form>
   </div>
   <div class="mat-elevation-z8">
+    <div class="table-container">
   <table class="table table-striped">
-    <thead>
+    <thead style="height: 55px;">
       <tr>
         <th *ngIf="selectedStudents.length > 0">
           <app-input-elimina-studente [classeFrequentata]="classe.name" [students]="selectedStudents" (buttonClick)="modalChiuso()"></app-input-elimina-studente>
         </th>
-        <th *ngIf="selectedStudents.length == 0"></th>
-        <th>Nome</th>
-        <th>Cognome</th>
-        <th class="d-flex align-items-center justify-content-between">
-          <span>Data di nascita</span>
-
-          <div class="input-row">
-            <app-input-nuovo-studente [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-nuovo-studente>
-          </div>
-          <div class="input-row">
-            <app-input-update-studente [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-update-studente>
-          </div>
+        <th *ngIf="selectedStudents.length == 0">
+          <span style="color:white; font-size:1px">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span>
         </th>
+        <th>Nome<i [class]="ord1" (click)="ordinaN()"></i></th>
+        <th>Cognome<i [class]="ord2" (click)="ordinaC()"></i></th>
+        <th>Data di nascita<i [class]="ord3" (click)="ordinaDN()"></i></th>
       </tr>
     </thead>
     <tbody>
@@ -41,6 +47,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
   <mat-paginator [length]="filteredArray.length"
 [pageSizeOptions]="[3, filteredArray.length]"
 showFirstLastButtons
@@ -52,7 +59,7 @@ aria-label="Select page of periodic elements"
 
 <ng-template #noStudenti>
   <p class="no-studenti">In questa classe non sono presenti studenti.</p>
-  <app-input-nuovo-studente class="x"  [classeFrequentata]="classe.name"></app-input-nuovo-studente>
+  <app-input-nuovo-studente class="x"  [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-nuovo-studente>
 </ng-template>
 
 

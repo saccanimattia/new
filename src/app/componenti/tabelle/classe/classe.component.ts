@@ -20,6 +20,9 @@ export class ClasseComponent{
   persone: any[] = []
   i : any
   s: any[] =[]
+  ord1 = "bi bi-caret-down"
+  ord2 = "bi bi-caret-down"
+  ord3 = "bi bi-caret-down"
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private prendi: PrendiDatiService, private route: ActivatedRoute, private arr:ArrayServiceService) {
     this.route.params.subscribe(params => {
@@ -66,6 +69,7 @@ export class ClasseComponent{
       this.i = this.i+1
       return this.persone[this.i - 1].toLowerCase().includes(this.searchQuery.toLowerCase());
     });
+    this.s = this.filteredArray.slice(0,this.paginator.pageSize)
   }
 
   prendiPersone(){
@@ -92,6 +96,7 @@ modalChiuso(){
   this.studentiClasse = this.arr.prendiStudentiClasse()
 
   this.filteredArray = this.studentiClasse
+  this.s = this.filteredArray.slice(0,this.paginator.pageSize)
   this.prendiPersone()
   this.selectedStudents = [];
  }
@@ -103,6 +108,37 @@ modalChiuso(){
   const endIndex = startIndex + event.pageSize;
   this.s = this.filteredArray.slice(startIndex, endIndex);
   // Puoi aggiornare i dati visualizzati in base alla pagina corrente qui
+}
+
+ordinaN(){
+  this.svoutaTriangoli()
+  this.ord1 = "bi bi-caret-down-fill"
+  this.studentiClasse.sort((a:any, b:any) => a.name.localeCompare(b.name));
+  this.filteredArray = this.studentiClasse
+  this.s = this.filteredArray.slice(0,this.paginator.pageSize)
+}
+
+ordinaC(){
+  this.svoutaTriangoli()
+  this.ord2 = "bi bi-caret-down-fill"
+  this.studentiClasse.sort((a:any, b:any) => a.surname.localeCompare(b.surname));
+  this.filteredArray = this.studentiClasse
+  this.s = this.filteredArray.slice(0,this.paginator.pageSize)
+}
+
+ordinaDN(){
+  this.svoutaTriangoli()
+  this.ord3 = "bi bi-caret-down-fill"
+  this.studentiClasse.sort((a:any, b:any) => a.birthDate.localeCompare(b.birthDate));
+  this.filteredArray = this.studentiClasse
+  this.s = this.filteredArray.slice(0,this.paginator.pageSize)
+}
+
+
+svoutaTriangoli() {
+  this.ord1 = "bi bi-caret-down"
+  this.ord2 = "bi bi-caret-down"
+  this.ord3 = "bi bi-caret-down"
 }
 
 }

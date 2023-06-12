@@ -19,7 +19,7 @@ export class InputEliminaAllStudentiComponent {
 
   openModale() {
 
-    const modal = document.querySelector('.modalElimina');
+    const modal = document.querySelector('#mE');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
     this.filteredArray = this.students
@@ -27,7 +27,7 @@ export class InputEliminaAllStudentiComponent {
   }
 
   closeModale() {
-    const modal = document.querySelector('.modalElimina');
+    const modal = document.querySelector('#mE');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
     window.location.reload();

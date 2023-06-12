@@ -20,6 +20,11 @@ export class AllStudentiComponent {
     classeId: any
     classe: any
     i = 0;
+    ord1 = "bi bi-caret-down"
+    ord2 = "bi bi-caret-down"
+    ord3 = "bi bi-caret-down"
+    ord4 = "bi bi-caret-down"
+
     constructor(private prendi: PrendiDatiService, private arr:ArrayServiceService) {
 
     }
@@ -72,7 +77,7 @@ export class AllStudentiComponent {
         this.i = this.i+1
         return this.persone[this.i - 1].toLowerCase().includes(this.searchQuery.toLowerCase());
       });
-
+      this.studentiVisualizzati = this.filteredArray.slice(0,this.paginator.pageSize)
     }
 
 
@@ -100,6 +105,7 @@ export class AllStudentiComponent {
 
       this.trasformaNuoveClassi()
       this.filteredArray = this.studentiClasse
+      this.studentiVisualizzati = this.filteredArray.slice(0,this.paginator.pageSize)
       this.selectedStudents = [];
      }
 
@@ -122,6 +128,46 @@ export class AllStudentiComponent {
       const endIndex = startIndex + event.pageSize;
       this.studentiVisualizzati = this.filteredArray.slice(startIndex, endIndex);
       // Puoi aggiornare i dati visualizzati in base alla pagina corrente qui
+    }
+
+    ordinaN(){
+      this.svoutaTriangoli()
+      this.ord1 = "bi bi-caret-down-fill"
+      this.studentiClasse.sort((a:any, b:any) => a.name.localeCompare(b.name));
+      this.filteredArray = this.studentiClasse
+      this.studentiVisualizzati = this.filteredArray.slice(0,this.paginator.pageSize)
+    }
+
+    ordinaC(){
+      this.svoutaTriangoli()
+      this.ord2 = "bi bi-caret-down-fill"
+      this.studentiClasse.sort((a:any, b:any) => a.surname.localeCompare(b.surname));
+      this.filteredArray = this.studentiClasse
+      this.studentiVisualizzati = this.filteredArray.slice(0,this.paginator.pageSize)
+    }
+
+    ordinaDN(){
+      this.svoutaTriangoli()
+      this.ord3 = "bi bi-caret-down-fill"
+      this.studentiClasse.sort((a:any, b:any) => a.birthDate.localeCompare(b.birthDate));
+      this.filteredArray = this.studentiClasse
+      this.studentiVisualizzati = this.filteredArray.slice(0,this.paginator.pageSize)
+    }
+
+    ordinaCL(){
+      this.svoutaTriangoli()
+      this.ord4 = "bi bi-caret-down-fill"
+      this.studentiClasse.sort((a:any, b:any) => a.classe.localeCompare(b.classe));
+      this.filteredArray = this.studentiClasse
+      this.studentiVisualizzati = this.filteredArray.slice(0,this.paginator.pageSize)
+    }
+
+
+    svoutaTriangoli() {
+      this.ord1 = "bi bi-caret-down"
+      this.ord2 = "bi bi-caret-down"
+      this.ord3 = "bi bi-caret-down"
+      this.ord4 = "bi bi-caret-down"
     }
 }
 

@@ -63,6 +63,7 @@ export class ArrayServiceService {
       return true;
     });
     }
+    console.log(this.studentiClasse)
     return this.studentiClasse
   }
 

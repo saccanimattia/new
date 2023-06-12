@@ -26,6 +26,7 @@ export class TabellaClassiQuarteComponent implements OnInit{
   filteredArray: any[] = [];
   classi: any[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  ord = "bi bi-caret-down"
   constructor(private prendi: PrendiDatiService, private router : Router, private pocketBaseService: PocketBaseService, private arr:ArrayServiceService) {
 
   }
@@ -68,9 +69,7 @@ export class TabellaClassiQuarteComponent implements OnInit{
     this.router.navigate(['/classe', classeId]);
   }
 
-  ordinaClassi(){
-    this.classiQuarte = this.prendi.ordinaClassi();
-    }
+
 
 
     ngOnDestroy(): void {
@@ -82,11 +81,14 @@ export class TabellaClassiQuarteComponent implements OnInit{
 
 
     performSearch(): void {
-    this.filteredArray = this.classiQuarte
-    this.filteredArray = this.classiQuarte.filter(item => {
-      return item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
-    });
-  }
+      this.filteredArray = this.classiQuarte
+      this.filteredArray = this.classiQuarte.filter(item => {
+        return item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+      });
+      this.classi = this.filteredArray.slice(0,this.paginator.pageSize)
+    }
+
+
 
   toggleSelected(classe: any) {
     if (classe.selected) {
@@ -102,6 +104,7 @@ export class TabellaClassiQuarteComponent implements OnInit{
    modalChiuso(){
     this.classiQuarte = this.arr.prendiClassi()
     this.filteredArray = this.classiQuarte
+    this.classi = this.filteredArray.slice(0,this.paginator.pageSize)
     this.selectedClasses = []
    }
 
@@ -112,6 +115,13 @@ export class TabellaClassiQuarteComponent implements OnInit{
     const endIndex = startIndex + event.pageSize;
     this.classi = this.filteredArray.slice(startIndex, endIndex);
     // Puoi aggiornare i dati visualizzati in base alla pagina corrente qui
+  }
+
+  ordina(){
+    this.classiQuarte = this.prendi.ordinaClassi(this.classiQuarte)
+    this.filteredArray = this.classiQuarte
+    this.classi = this.filteredArray.slice(0,this.paginator.pageSize)
+    this.ord = "bi bi-caret-down-fill"
   }
 }
 

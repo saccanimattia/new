@@ -20,7 +20,7 @@ export class InputEliminaStudenteComponent {
   constructor(private servizio: PrendiDatiService, private arr: ArrayServiceService) {}
 
   openModale() {
-    const modal = document.querySelector('.modalElimina');
+    const modal = document.querySelector('#mEC');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
     this.filteredArray = this.students
@@ -28,10 +28,11 @@ export class InputEliminaStudenteComponent {
   }
 
   closeModale() {
-    const modal = document.querySelector('.modalElimina');
+    const modal = document.querySelector('#mEC');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
     this.buttonClick.emit();
+
   }
 
 
@@ -43,6 +44,7 @@ export class InputEliminaStudenteComponent {
 
   deleteStudents(): void {
     for(let studente of this.students){
+      console.log(studente)
       this.elimina(studente);
     }
     this.arr.eliminaStudentiClasse(this.students)

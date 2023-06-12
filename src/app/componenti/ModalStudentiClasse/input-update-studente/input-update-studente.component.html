@@ -1,17 +1,18 @@
 <div class="circle-button">
-  <button type="button" class="btn btn-primary"(click)="openModalee()">
-    <i class="bi bi-arrow-clockwise"></i>
+  <button type="button" class="btn btn-success"(click)="openModalee()">
+    <i class="bi bi-arrow-clockwise"></i>Update Student
   </button>
 </div>
 
 <!-- Modal -->
-<div class="modalUpdate" tabindex="-1" role="dialog">
+<div class="modal" tabindex="-1" role="dialog" id="mAC">
   <div class="modal-dialog centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Aggiorna i dati di uno studente<button type="button" class="close" (click)="closeModalee()">
+      <div class="modal-header d-flex justify-content-between align-items-start">
+        <h2 class="modal-title">Aggiorna i dati di uno studente</h2>
+        <button type="button" class="close" (click)="closeModalee()">
           <span aria-hidden="true">&times;</span>
-        </button></h2>
+        </button>
       </div>
       <div class="modal-body">
         <h3>studente da aggiornare</h3>
@@ -47,7 +48,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="saveClass()">Salva</button>
+        <button type="button" class="btn btn-success" (click)="saveClass()">Salva</button>
       </div>
     </div>
   </div>

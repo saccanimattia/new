@@ -1,99 +1,63 @@
-.studenti-container {
-  text-align: center;
+$search-form-bg-color: #f8f9fa; // Colore di sfondo per il form di ricerca
+$primary-color: #007bff; // Colore primario
+$success-color: #28a745; // Colore di successo
+$modal-bg-color: #28a745; // Colore di sfondo per il modal
 
-  h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: darkorange;
-    margin-top: 20px;
-  }
-
-  .table {
-    margin: auto;
-    max-width: 100%; /* Aggiungi questa proprietà per rendere la tabella responsive */
-    overflow-x: auto; /* Aggiungi questa proprietà per consentire lo scorrimento orizzontale sulla tabella */
-  }
-
-  .custom-table {
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 100%; /* Imposta la larghezza della tabella al 100% per renderla responsive */
-
-    th, td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-  }
-}
-
-.no-studenti {
-  text-align: center;
-  margin-top: 20px;
-  color: darkorange;
+h1 {
+  font-size: 24px;
   font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  margin-top:20px;
+  margin-left:20px
 }
 
 .search-form {
+  background-color: $search-form-bg-color;
+  padding: 15px;
+
+  form {
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.circle-button {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
-
-  .form-group {
-    margin-right: 10px;
-  }
-
-  .form-control {
-    width: 200px;
-    border-radius: 4px;
-  }
-}
-
-.float-end {
-  float: right;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.align-items-center {
   align-items: center;
-}
 
-.justify-content-between {
-  justify-content: space-between;
-}
+  button {
+    background-color: $success-color;
+    color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    border: none;
 
-.input-row {
-  margin-left: 10px;
-}
-
-.first-column {
-  width: 50px;
-}
-
-@media (max-width: 768px) {
-  /* Aggiungi stili specifici per dispositivi con una larghezza massima di 768px */
-  .studenti-container {
-    h1 {
-      font-size: 20px;
-    }
-
-    .search-form {
-      .form-control {
-        width: 150px;
-      }
-    }
-  }
-
-  .custom-table {
-    th, td {
-      padding: 6px;
+    i {
+      margin-right: 5px;
     }
   }
 }
+
+.table-container {
+  max-height: 250px;
+  overflow-y: auto;
+
+  .table {
+    height: 100px;
+  }
+}
+
+
+.mat-elevation-z8 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-top: 15px;
+
+
+}
+
+
+

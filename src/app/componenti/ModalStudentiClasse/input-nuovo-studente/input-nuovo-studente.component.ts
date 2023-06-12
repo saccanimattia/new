@@ -35,13 +35,13 @@ export class InputNuovoStudenteComponent{
     this.studente = {name: 'nome', surname: 'cognome',classe: 'classe',birthDate: 'data di nascita'}
     this.prendiStudenti()
     this.selectedStudents.length = 0;
-    const modal = document.querySelector('.modalNuovo');
+    const modal = document.querySelector('#mUC');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
   }
 
   closeModal() {
-    const modal = document.querySelector('.modalNuovo');
+    const modal = document.querySelector('#mUC');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
     this.buttonClick.emit();
@@ -81,6 +81,7 @@ export class InputNuovoStudenteComponent{
 modifica(){
   for(let stud of this.selectedStudents){
     let s = this.servizio.studenteToId(stud.name, stud.surname, '')
+    console.log(this.classeFrequentata)
     stud.classe = this.servizio.classeToId(this.classeFrequentata)
     this.servizio.updateStudente(stud, s)
   }

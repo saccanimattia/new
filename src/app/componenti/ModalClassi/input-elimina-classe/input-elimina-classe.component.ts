@@ -17,7 +17,7 @@ export class InputEliminaClasseComponent {
 
 
   openModale() {
-    const modal = document.querySelector('.modalElimina');
+    const modal = document.querySelector('#d');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
     this.filteredArray = this.classes
@@ -26,7 +26,7 @@ export class InputEliminaClasseComponent {
   }
 
   closeModale() {
-    const modal = document.querySelector('.modalElimina');
+    const modal = document.querySelector('#d');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
     this.buttonClick.emit();

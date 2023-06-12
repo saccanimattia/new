@@ -34,13 +34,13 @@ export class InputUpdateAllStudentiComponent {
   constructor(private servizio: PrendiDatiService, private arr : ArrayServiceService, private datePipe : DatePipe) {}
 
   openModalee() {
-    const modal = document.querySelector('.modalUpdate');
+    const modal = document.querySelector('#mU');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
   }
 
   closeModalee() {
-    const modal = document.querySelector('.modalUpdate');
+    const modal = document.querySelector('#mU');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
     this.buttonClick.emit();

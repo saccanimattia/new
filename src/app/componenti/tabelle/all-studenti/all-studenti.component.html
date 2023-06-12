@@ -1,41 +1,43 @@
 <div *ngIf="studentiClasse.length !== 0; else noStudenti" class="studenti-container">
   <h1>TUTTI GLI STUDENTI</h1>
 
-  <div class="search-form">
-      <form class="form-inline">
-          <div class="form-group">
-              <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
-          </div>
-      </form>
+  <div class="search-form d-flex mb-4">
+    <form class="form-inline row w-100">
+      <div class="form-group col-lg-8 col-md-6 col-sm-12">
+        <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
+      </div>
+
+      <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="input-row">
+          <app-input-nuovo-all-studenti class="x"  (buttonClick)="modalChiuso()"></app-input-nuovo-all-studenti>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="input-row">
+          <app-input-update-all-studenti class="x"  (buttonClick)="modalChiuso()"></app-input-update-all-studenti>
+        </div>
+      </div>
+    </form>
   </div>
 
   <div class="mat-elevation-z8">
+    <div class="table-container">
       <table class="table table-striped custom-table">
-          <thead>
-              <tr>
-                  <th *ngIf="selectedStudents.length > 0" class="first-column">
-                      <app-input-elimina-all-studenti [students]="selectedStudents" (buttonClick)="modalChiuso()"></app-input-elimina-all-studenti>
-                  </th>
-                  <th *ngIf="selectedStudents.length == 0" class="first-column"></th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Cognome</th>
-                  <th scope="col">Data di nascita</th>
-                  <th class="d-flex align-items-center justify-content-between" scope="col">
-                      <span>Classe</span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-
-                      <div class="input-row">
-                          <app-input-nuovo-all-studenti (buttonClick)="modalChiuso()"></app-input-nuovo-all-studenti>
-                      </div>
-                      <div class="input-row">
-                          <app-input-update-all-studenti (buttonClick)="modalChiuso()"></app-input-update-all-studenti>
-                      </div>
-                  </th>
-              </tr>
-          </thead>
+        <thead style="height: 55px;">
+          <tr>
+            <th *ngIf="selectedStudents.length > 0">
+              <app-input-elimina-all-studenti [students]="selectedStudents" (buttonClick)="modalChiuso()"></app-input-elimina-all-studenti>
+            </th>
+            <th *ngIf="selectedStudents.length == 0">
+              <span style="color:white; font-size:1px">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span>
+            </th>
+            <th>Nome<i [class]="ord1" (click)="ordinaN()"></i></th>
+            <th>Cognome<i [class]="ord2" (click)="ordinaC()"></i></th>
+            <th >
+             Data di nascita<i [class]="ord3" (click)="ordinaDN()"></i></th>
+            <th>classe<i [class]="ord4" (click)="ordinaCL()"></i></th>
+          </tr>
           <tbody>
               <tr *ngFor="let alunno of studentiVisualizzati">
                   <td class="first-column">
@@ -48,7 +50,8 @@
               </tr>
           </tbody>
       </table>
-      <mat-paginator [length]="studentiClasse.length"
+    </div>
+      <mat-paginator [length]="filteredArray.length"
                [pageSizeOptions]="[5, 10]"
                showFirstLastButtons
                aria-label="Select page of periodic elements"

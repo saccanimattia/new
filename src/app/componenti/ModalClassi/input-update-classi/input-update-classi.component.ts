@@ -20,13 +20,13 @@ export class InputUpdateClassiComponent {
   constructor(private servizio: PrendiDatiService, private arr: ArrayServiceService) {}
 
   openModalee() {
-    const modal = document.querySelector('.modalUpdate');
+    const modal = document.querySelector('#uS');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
   }
 
   closeModalee() {
-    const modal = document.querySelector('.modalUpdate');
+    const modal = document.querySelector('#uS');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
     this.buttonClick.emit();

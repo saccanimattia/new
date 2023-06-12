@@ -26,14 +26,14 @@ export class InputNuovoAllStudentiComponent {
 
   openModal() {
     this.studente = {name: 'nome', surname: 'cognome',classe: 'classe',birthDate: 'data di nascita'}
-    const modal = document.querySelector('.modalAllStudenti');
+    const modal = document.querySelector('#mA');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
     this.prendiClassi()
   }
 
   closeModal() {
-    const modal = document.querySelector('.modalAllStudenti');
+    const modal = document.querySelector('#mA');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
     this.buttonClick.emit();

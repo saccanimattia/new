@@ -1,91 +1,63 @@
+$search-form-bg-color: #f8f9fa; // Colore di sfondo per il form di ricerca
+$primary-color: #007bff; // Colore primario
+$success-color: #28a745; // Colore di successo
+$modal-bg-color: #28a745; // Colore di sfondo per il modal
+
 h1 {
   font-size: 24px;
   font-weight: bold;
-  color: darkorange;
-  text-align: center;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  margin-top:20px;
+  margin-left:20px
 }
+
 .search-form {
+  background-color: $search-form-bg-color;
+  padding: 15px;
+
+  form {
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.circle-button {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
-
-  .form-group {
-    margin-right: 10px;
-  }
-
-  .form-control {
-    width: 200px;
-    border-radius: 4px;
-  }
-}
-
-.table {
-
-  margin: auto;
-  border-collapse: collapse;
-
-  th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-
-  th {
-    background-color: #f2f2f2;
-  }
-
-  tfoot td {
-    padding: 0;
-  }
-}
-
-.float-end {
-  float: right;
-}
-
-.input-row {
-  display: flex;
   align-items: center;
 
-  .btn-group {
-    margin-left: 10px;
+  button {
+    background-color: $success-color;
+    color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    border: none;
+
+    i {
+      margin-right: 5px;
+    }
   }
 }
 
-.d-flex {
-  display: flex;
+.table-container {
+  max-height: 250px;
+  overflow-y: auto;
+
+  .table {
+    height: 100px;
+  }
 }
 
-.align-items-center {
-  align-items: center;
+
+.mat-elevation-z8 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-top: 15px;
+
+
 }
 
-input[type="checkbox"] {
-  margin-right: 10px;
-}
 
-.bi {
-  vertical-align: middle;
-}
 
-.table th.checkbox-header,
-.table td.checkbox-cell {
-  width: 50px;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.align-items-center {
-  align-items: center;
-}
-
-.justify-content-between {
-  justify-content: space-between;
-}
-
-.input-row {
-  margin-left: 10px; /* Aggiusta il margine a sinistra come desiderato */
-}

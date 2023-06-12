@@ -29,13 +29,13 @@ export class InputUpdateStudenteComponent {
   openModalee() {
     this.studenteA = {name: 'nome', surname: 'cognome',classe: 'classe',birthDate: 'data di nascita'}
     this.studenteB = {name: 'nome', surname: 'cognome',classe: 'classe',birthDate: 'data di nascita'}
-    const modal = document.querySelector('.modalUpdate');
+    const modal = document.querySelector('#mAC');
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: block');
   }
 
   closeModalee() {
-    const modal = document.querySelector('.modalUpdate');
+    const modal = document.querySelector('#mAC');
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
     this.buttonClick.emit();
