@@ -1,25 +1,27 @@
 <div *ngIf="studentiClasse.length !== 0; else noStudenti" class="studenti-container">
   <h1>{{ classe.name }}</h1>
 
-  <div class="search-form d-flex mb-4">
+  <div class="search-form d-flex align-items-center mb-4">
     <form class="form-inline row w-100">
-      <div class="form-group col-lg-8 col-md-6 col-sm-12">
+      <div class="form-group col-lg-8 col-md-1 col-sm-1">
         <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
       </div>
 
-      <div class="col-lg-2 col-md-3 col-sm-6">
+      <div class="col-lg-2">
         <div class="input-row">
-          <app-input-nuovo-studente class="x"  [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-nuovo-studente>
+          <app-input-nuovo-studente class="x" [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-nuovo-studente>
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-3 col-sm-6">
+      <div class="col-lg-2">
         <div class="input-row">
-          <app-input-update-studente class="x"  [classeFrequentata]="classe.name"(buttonClick)="modalChiuso()"></app-input-update-studente>
+          <app-input-update-studente class="x" [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-update-studente>
         </div>
       </div>
     </form>
   </div>
+
+
   <div class="mat-elevation-z8">
     <div class="table-container">
   <table class="table table-striped">
