@@ -61,7 +61,9 @@ aria-label="Select page of periodic elements"
 
 <ng-template #noStudenti>
   <p class="no-studenti">In questa classe non sono presenti studenti.</p>
-  <app-input-nuovo-studente class="x"  [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-nuovo-studente>
+  <div class="center-container">
+    <app-input-nuovo-studente [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-nuovo-studente>
+  </div>
 </ng-template>
 
 
