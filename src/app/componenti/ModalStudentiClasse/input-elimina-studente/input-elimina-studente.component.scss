@@ -11,6 +11,7 @@ $font-color: #333;
   right: 0;
   bottom: 0;
   left: 0;
+
   z-index: 1050;
   overflow: auto;
 
@@ -22,12 +23,15 @@ $font-color: #333;
     display: flex;
     align-items: center;
     min-height: calc(100% - 3.5rem);
+    min-width: calc(100% - 3.5rem);
+    width:200px;
   }
 
   .modal-content {
     margin: auto;
     background-color: #f8f9fa;
     border-radius: 0.25rem;
+    width:500px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 
     .modal-header {

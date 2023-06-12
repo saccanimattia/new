@@ -53,15 +53,8 @@ export class InputUpdateAllStudentiComponent {
 
   aggiorna(){
     this.studenteB.birthDate = this.datePipe.transform(this.studenteB.birthDate, 'yyyy-MM-dd HH:mm:ss.SSS');
-    console.log(this.studenteA)
-    console.log(this.studenteB)
     if(this.studenteB.classe != '')
     this.studenteB.classe = this.servizio.classeToId(this.studenteB.classe)
-
-
-    console.log(this.studenteA.name)
-    console.log(this.studenteA.surname)
-    console.log(this.studenteA.classe)
     this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname, this.studenteA.classe))
     this.arr.updateAllStudenti(this.studenteA, this.studenteB)
 

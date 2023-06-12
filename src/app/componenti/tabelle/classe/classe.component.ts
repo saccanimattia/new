@@ -89,10 +89,8 @@ toggleStudentSelection(student: any): void {
 }
 
 modalChiuso(){
-  console.log("this.studentiClasse")
-  console.log(this.studentiClasse)
   this.studentiClasse = this.arr.prendiStudentiClasse()
-  console.log(this.studentiClasse)
+
   this.filteredArray = this.studentiClasse
   this.prendiPersone()
   this.selectedStudents = [];

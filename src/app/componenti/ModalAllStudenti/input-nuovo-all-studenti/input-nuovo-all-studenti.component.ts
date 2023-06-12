@@ -53,8 +53,6 @@ export class InputNuovoAllStudentiComponent {
   saveClass() {
     this.studente.birthDate = this.datePipe.transform(this.studente.birthDate, 'yyyy-MM-dd HH:mm:ss.SSS')
     this.o = this.studente
-    console.log(this.o)
-    console.log(this.classi)
     this.arr.aggiungiAllStudenti(this.o)
     if(this.studente.classe != '')
       this.studente.classe = this.servizio.classeToId(this.studente.classe)

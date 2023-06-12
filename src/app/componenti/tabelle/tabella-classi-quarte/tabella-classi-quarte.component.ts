@@ -86,7 +86,6 @@ export class TabellaClassiQuarteComponent implements OnInit{
     this.filteredArray = this.classiQuarte.filter(item => {
       return item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
     });
-    console.log(this.filteredArray)
   }
 
   toggleSelected(classe: any) {
@@ -98,7 +97,7 @@ export class TabellaClassiQuarteComponent implements OnInit{
         this.selectedClasses.splice(index, 1);
       }
     }
-    console.log(this.selectedClasses)
+
   }
    modalChiuso(){
     this.classiQuarte = this.arr.prendiClassi()

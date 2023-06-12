@@ -16,9 +16,6 @@ const routes: Routes = [
   {path:"classi", component:TabellaClassiQuarteComponent},
   {path:"studenti", component:AllStudentiComponent},
   {path:"creaclasse", component:InputCreaClasseComponent},
-  {path:"creastudente", component:InputNuovoStudenteComponent},
-  {path:"modificastudente", component:InputUpdateStudenteComponent},
-  {path:"eliminastudente", component:InputEliminaStudenteComponent},
   {path: 'classe/:id', component: ClasseComponent }
 ];
 

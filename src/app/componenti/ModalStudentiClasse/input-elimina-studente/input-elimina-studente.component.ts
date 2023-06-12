@@ -59,7 +59,6 @@ export class InputEliminaStudenteComponent {
   }
 
   prendiPersone(){
-    console.log("ifb")
     for(let persona of this.filteredArray){
       this.persone.push(persona.name + " " + persona.surname + " " + persona.birthDate)
     }

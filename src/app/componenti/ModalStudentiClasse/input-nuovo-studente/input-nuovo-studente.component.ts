@@ -59,7 +59,6 @@ export class InputNuovoStudenteComponent{
     } else if (this.selectedOption === 'existing') {
 
       this.modifica()
-      console.log(this.selectedStudents)
 
       }
 
@@ -82,7 +81,6 @@ export class InputNuovoStudenteComponent{
 modifica(){
   for(let stud of this.selectedStudents){
     let s = this.servizio.studenteToId(stud.name, stud.surname, '')
-    console.log(this.classeFrequentata)
     stud.classe = this.servizio.classeToId(this.classeFrequentata)
     this.servizio.updateStudente(stud, s)
   }

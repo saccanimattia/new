@@ -42,7 +42,7 @@
     </tbody>
   </table>
   <mat-paginator [length]="filteredArray.length"
-[pageSizeOptions]="[3, 5]"
+[pageSizeOptions]="[3, filteredArray.length]"
 showFirstLastButtons
 aria-label="Select page of periodic elements"
 (page)="onPageChange($event)">

@@ -38,8 +38,6 @@ export class ArrayServiceService {
 
 
   eliminaAllStudenti(x:any[]){
-    console.log("ciao")
-    console.log(x)
     for(let xx of x){
       let isElim = false;
     this.allStudenti = this.allStudenti.filter(item => {
@@ -53,7 +51,6 @@ export class ArrayServiceService {
   }
 
   eliminaStudentiClasse(x:any[]){
-    console.log(x)
     for(let xx of x){
       console.log(xx)
       let isElim = false;
@@ -66,7 +63,6 @@ export class ArrayServiceService {
       return true;
     });
     }
-    console.log(this.studentiClasse)
     return this.studentiClasse
   }
 
@@ -91,11 +87,7 @@ export class ArrayServiceService {
   }
 
   aggiungiAllStudenti(x:any){
-    console.log("agg")
-    console.log(x)
     this.allStudenti.push(x);
-    console.log("agg")
-    console.log(this.allStudenti)
     console.log(this.allStudenti[this.allStudenti.length-1])
 
   }
@@ -110,42 +102,29 @@ export class ArrayServiceService {
     let isUp = false;
     this.classi = this.classi.filter(item => {
         if(item.name == x.name  && isUp == false){
-          console.log("qwertyuiop")
           isUp = true;
           item.name = xx.name
-          console.log(item.name)
           return xx;
       }
       return true;
     });
-    console.log(this.classi)
   }
 
   updateAllStudenti(x:any, xx:any){
-    console.log("y")
-    console.log(x)
-    console.log("xx")
-    console.log(xx)
     let isUp = false;
-    console.log(x)
-    console.log(xx)
     this.allStudenti = this.allStudenti.filter(item => {
-      console.log(item)
         if((item.name == x.name && item.surname == x.surname) && isUp == false){
-          console.log("qwertyuiop")
           isUp = true;
           item.name = xx.name
           item.surname = xx.surname
           item.classe = xx.classe
           item.dateBirth = xx.dateBirth
-          console.log(item.name)
-          console.log(item.surname)
+
           return xx;
       }
       return true;
     });
-    console.log("this.allStudenti")
-    console.log(this.allStudenti)
+
   }
 
   updateStudenteClasse(x:any, xx:any){
@@ -154,14 +133,12 @@ export class ArrayServiceService {
     this.studentiClasse = this.studentiClasse.filter(item => {
       console.log(item)
         if((item.name == x.name && item.surname == x.surname) && isUp == false){
-          console.log("qwertyuiop")
+
           isUp = true;
           item.name = xx.name
           item.surname = xx.surname
           item.classe = xx.classe
           item.dateBirth = xx.dateBirth
-          console.log(item.name)
-          console.log(item.surname)
           if(x.classe != xx.classe){
             return false;
           }
@@ -171,7 +148,6 @@ export class ArrayServiceService {
       }
       return true;
     });
-    console.log(this.studentiClasse)
   }
 
   updateStudenteClasseCrea(x:any[], classe:any){
