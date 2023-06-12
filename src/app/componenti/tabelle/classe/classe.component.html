@@ -3,7 +3,7 @@
 
   <div class="search-form d-flex align-items-center mb-4">
     <form class="form-inline row w-100">
-      <div class="form-group col-lg-8 col-md-1 col-sm-1">
+      <div class="form-group col-lg-6 col-md-1 col-sm-1">
         <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
       </div>
 
@@ -18,6 +18,13 @@
           <app-input-update-studente class="x" [classeFrequentata]="classe.name" (buttonClick)="modalChiuso()"></app-input-update-studente>
         </div>
       </div>
+
+      <div class="col-lg-2 col-md-3 col-sm-6">
+        <div *ngIf="selectedStudents.length > 0" >
+          <app-input-elimina-studente [classeFrequentata]="classe.name" [students]="selectedStudents" (buttonClick)="modalChiuso()"></app-input-elimina-studente>
+        </div>
+      </div>
+
     </form>
   </div>
 
@@ -27,12 +34,15 @@
   <table class="table table-striped">
     <thead style="height: 55px;">
       <tr>
-        <th *ngIf="selectedStudents.length > 0">
-          <app-input-elimina-studente [classeFrequentata]="classe.name" [students]="selectedStudents" (buttonClick)="modalChiuso()"></app-input-elimina-studente>
+        <th>
+          <label>
+            <div class="d-flex align-items-center">
+              <input type="checkbox" [(ngModel)]="isSelected"  (click)="gestisciSelezioneTutti()">
+            </div>
+          </label>
         </th>
-        <th *ngIf="selectedStudents.length == 0">
-          <span style="color:white; font-size:1px">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span>
-        </th>
+
+
         <th>Nome<i [class]="ord1" (click)="ordinaN()"></i></th>
         <th>Cognome<i [class]="ord2" (click)="ordinaC()"></i></th>
         <th>Data di nascita<i [class]="ord3" (click)="ordinaDN()"></i></th>

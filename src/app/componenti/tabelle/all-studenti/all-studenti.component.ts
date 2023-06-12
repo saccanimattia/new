@@ -24,7 +24,7 @@ export class AllStudentiComponent {
     ord2 = "bi bi-caret-down"
     ord3 = "bi bi-caret-down"
     ord4 = "bi bi-caret-down"
-
+    isSelected = false;
     constructor(private prendi: PrendiDatiService, private arr:ArrayServiceService) {
 
     }
@@ -168,6 +168,28 @@ export class AllStudentiComponent {
       this.ord2 = "bi bi-caret-down"
       this.ord3 = "bi bi-caret-down"
       this.ord4 = "bi bi-caret-down"
+    }
+
+    selezionaTutti() {
+      this.selectedStudents = [...this.studentiVisualizzati];
+      this.studentiVisualizzati.forEach(st => {
+        st.selected = true;
+      });
+    }
+
+    deselezionaTutti() {
+      this.selectedStudents = [];
+      this.studentiVisualizzati.forEach(st => {
+        st.selected = false;
+      });
+    }
+
+    gestisciSelezioneTutti() {
+      if (this.selectedStudents.length === this.studentiVisualizzati.length) {
+        this.deselezionaTutti();
+      } else {
+        this.selezionaTutti();
+      }
     }
 }
 

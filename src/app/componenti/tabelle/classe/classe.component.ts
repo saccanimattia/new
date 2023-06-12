@@ -23,6 +23,7 @@ export class ClasseComponent{
   ord1 = "bi bi-caret-down"
   ord2 = "bi bi-caret-down"
   ord3 = "bi bi-caret-down"
+  isSelected = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private prendi: PrendiDatiService, private route: ActivatedRoute, private arr:ArrayServiceService) {
     this.route.params.subscribe(params => {
@@ -139,6 +140,28 @@ svoutaTriangoli() {
   this.ord1 = "bi bi-caret-down"
   this.ord2 = "bi bi-caret-down"
   this.ord3 = "bi bi-caret-down"
+}
+
+selezionaTutti() {
+  this.selectedStudents = [...this.s];
+  this.s.forEach(st => {
+    st.selected = true;
+  });
+}
+
+deselezionaTutti() {
+  this.selectedStudents = [];
+  this.s.forEach(st => {
+    st.selected = false;
+  });
+}
+
+gestisciSelezioneTutti() {
+  if (this.selectedStudents.length === this.s.length) {
+    this.deselezionaTutti();
+  } else {
+    this.selezionaTutti();
+  }
 }
 
 }

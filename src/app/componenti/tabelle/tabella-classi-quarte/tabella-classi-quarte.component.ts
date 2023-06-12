@@ -28,6 +28,7 @@ export class TabellaClassiQuarteComponent implements OnInit {
   ord = "bi bi-caret-down";
   page = 0;
   Npage = 5
+  isSelected = false;
 
   constructor(
     private prendi: PrendiDatiService,
@@ -116,5 +117,27 @@ export class TabellaClassiQuarteComponent implements OnInit {
     this.filteredArray = this.classiQuarte;
     this.classi = this.filteredArray.slice(0, this.paginator.pageSize);
     this.ord = "bi bi-caret-down-fill";
+  }
+
+  selezionaTutti() {
+    this.selectedClasses = [...this.classi];
+    this.classi.forEach(classe => {
+      classe.selected = true;
+    });
+  }
+
+  deselezionaTutti() {
+    this.selectedClasses = [];
+    this.classi.forEach(classe => {
+      classe.selected = false;
+    });
+  }
+
+  gestisciSelezioneTutti() {
+    if (this.selectedClasses.length === this.classi.length) {
+      this.deselezionaTutti();
+    } else {
+      this.selezionaTutti();
+    }
   }
 }

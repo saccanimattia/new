@@ -1,10 +1,4 @@
-.circle-button {
-  height: 25px;
 
-  button {
-    height: 100%;
-  }
-}
 
 .modal-header {
   display: flex;
@@ -40,3 +34,11 @@
   overflow: auto;}
 
 
+  .table-container {
+    max-height: 250px;
+    overflow-y: auto;
+
+    .table {
+      height: 100px;
+    }
+  }
