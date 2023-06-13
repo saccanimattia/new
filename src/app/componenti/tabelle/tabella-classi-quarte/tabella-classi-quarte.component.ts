@@ -15,7 +15,7 @@ declare var window: any;
 })
 export class TabellaClassiQuarteComponent implements OnInit {
   classiQuarte: any[] = [];
-  classeSelezionata: any;
+  classeSelezionata: any = null;
   selectedClasses: any[] = [];
   isClasse: any;
   formModal: any;
@@ -29,6 +29,9 @@ export class TabellaClassiQuarteComponent implements OnInit {
   page = 0;
   Npage = 5
   isSelected = false;
+  sSel : any[] = [];
+
+
 
   constructor(
     private prendi: PrendiDatiService,
@@ -54,6 +57,7 @@ export class TabellaClassiQuarteComponent implements OnInit {
         console.log("this.x:", this.x);
       }
     });
+
   }
 
   async prendiClassi(): Promise<void> {
@@ -114,8 +118,7 @@ export class TabellaClassiQuarteComponent implements OnInit {
   }
 
   ordina() {
-    this.classiQuarte = this.prendi.ordinaClassi(this.classiQuarte);
-    this.filteredArray = this.classiQuarte;
+    this.filteredArray = this.prendi.ordinaClassi(this.filteredArray);
     this.classi = this.filteredArray.slice(0, this.paginator.pageSize);
     this.ord = "bi bi-caret-down-fill";
   }
@@ -141,6 +144,108 @@ export class TabellaClassiQuarteComponent implements OnInit {
     } else {
       this.selezionaTutti();
     }
+  }
+
+  getClasseById(index: number) {
+    console.log(index)
+
+    if (this.filteredArray && this.filteredArray.length > index) {
+      return this.filteredArray[index];
+    }
+    return null; // o un valore di fallback se l'indice non è valido
+  }
+
+  clickModifica(classe: any) {
+    this.classeSelezionata = classe;
+    this.openModalee()
+  }
+
+  classeB:any = {
+    name: 'nome classe',
+  };
+
+
+  openModalee() {
+    this.classeB= {
+      name: '',
+    };
+    const modal = document.querySelector('#uS');
+    modal?.classList.add('show');
+    modal?.setAttribute('style', 'display: block');
+    console.log(this.classeSelezionata)
+  }
+
+  closeModalee() {
+    const modal = document.querySelector('#uS');
+    modal?.classList.remove('show');
+    modal?.setAttribute('style', 'display: none');
+    this.modalChiuso()
+  }
+
+  saveClass() {
+    this.aggiorna();
+    this.closeModalee();
+  }
+
+  aggiorna(){
+    console.log(this.classeSelezionata.name)
+    this.classeSelezionata.id = this.prendi.classeToId(this.classeSelezionata.name)
+
+    this.prendi.updateClasse(this.classeB, this.prendi.classeToId(this.classeSelezionata.name))
+    this.arr.updateClassi(this.classeSelezionata, this.classeB)
+  }
+
+
+  filteredArrayy: any[] = []
+  i: any
+  searchQueryy: any
+
+  clickModificaa(classe: any) {
+    if(classe != null){
+      this.selectedClasses = [];
+      this.selectedClasses.push(classe)
+
+    }
+    this.openModale()
+  }
+
+
+
+  openModale() {
+    const modal = document.querySelector('#d');
+    modal?.classList.add('show');
+    modal?.setAttribute('style', 'display: block');
+
+    this.filteredArrayy = this.selectedClasses
+  }
+
+  closeModale() {
+    const modal = document.querySelector('#d');
+    modal?.classList.remove('show');
+    modal?.setAttribute('style', 'display: none');
+    this.modalChiuso()
+  }
+
+
+  elimina(classe: any) {
+    this.prendi.eliminaClasse(this.prendi.classeToId(classe.name))
+  }
+
+  deleteClasses(): void {
+    console.log(this.selectedClasses)
+    for(let classe of this.selectedClasses){
+      this.elimina(classe);
+    }
+    console.log(this.selectedClasses)
+    this.arr.eliminaClassi(this.selectedClasses)
+    this.closeModale();
+  }
+
+  performSearchh(): void {
+    this.filteredArrayy = this.selectedClasses
+    this.filteredArrayy = this.selectedClasses.filter(item => {
+      return item.name.toLowerCase().includes(this.searchQueryy.toLowerCase());
+    });
   }
 
 

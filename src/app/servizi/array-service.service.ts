@@ -134,21 +134,21 @@ export class ArrayServiceService {
 
   updateStudenteClasse(x:any, xx:any){
     let isUp = false;
-
     this.studentiClasse = this.studentiClasse.filter(item => {
       console.log(item)
-        if((item.name == x.name && item.surname == x.surname) && isUp == false){
-
+      console.log(x.classe)
+        if((item.name === x.name && item.surname === x.surname) && isUp == false){
+          console.log(x.classe)
           isUp = true;
           item.name = xx.name
           item.surname = xx.surname
-          item.classe = xx.classe
           item.dateBirth = xx.dateBirth
-          if(x.classe != xx.classe){
-            return false;
+          if(x.classe == xx.classe){
+            console.log("ciao")
+            return xx;
           }
           else{
-            return xx;
+            return false;
           }
       }
       return true;

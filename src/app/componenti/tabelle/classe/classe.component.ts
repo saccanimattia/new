@@ -4,6 +4,7 @@ import { PrendiDatiService } from '../../../servizi/prendi-dati.service';
 import { ActivatedRoute } from '@angular/router';
 import { ArrayServiceService } from '../../../servizi/array-service.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-classe',
@@ -25,7 +26,7 @@ export class ClasseComponent{
   ord3 = "bi bi-caret-down"
   isSelected = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private prendi: PrendiDatiService, private route: ActivatedRoute, private arr:ArrayServiceService) {
+  constructor(private prendi: PrendiDatiService, private route: ActivatedRoute, private arr:ArrayServiceService, private datePipe : DatePipe) {
     this.route.params.subscribe(params => {
        this.classeId = params['id'];
     });
@@ -100,6 +101,7 @@ modalChiuso(){
   this.s = this.filteredArray.slice(0,this.paginator.pageSize)
   this.prendiPersone()
   this.selectedStudents = [];
+
  }
 
  onPageChange(event: PageEvent) {
@@ -114,24 +116,21 @@ modalChiuso(){
 ordinaN(){
   this.svoutaTriangoli()
   this.ord1 = "bi bi-caret-down-fill"
-  this.studentiClasse.sort((a:any, b:any) => a.name.localeCompare(b.name));
-  this.filteredArray = this.studentiClasse
+  this.filteredArray.sort((a:any, b:any) => a.name.localeCompare(b.name));
   this.s = this.filteredArray.slice(0,this.paginator.pageSize)
 }
 
 ordinaC(){
   this.svoutaTriangoli()
   this.ord2 = "bi bi-caret-down-fill"
-  this.studentiClasse.sort((a:any, b:any) => a.surname.localeCompare(b.surname));
-  this.filteredArray = this.studentiClasse
+  this.filteredArray.sort((a:any, b:any) => a.surname.localeCompare(b.surname));
   this.s = this.filteredArray.slice(0,this.paginator.pageSize)
 }
 
 ordinaDN(){
   this.svoutaTriangoli()
   this.ord3 = "bi bi-caret-down-fill"
-  this.studentiClasse.sort((a:any, b:any) => a.birthDate.localeCompare(b.birthDate));
-  this.filteredArray = this.studentiClasse
+  this.filteredArray.sort((a:any, b:any) => a.birthDate.localeCompare(b.birthDate));
   this.s = this.filteredArray.slice(0,this.paginator.pageSize)
 }
 
@@ -164,5 +163,119 @@ gestisciSelezioneTutti() {
     this.selezionaTutti();
   }
 }
+
+clickModifica(alunno: any) {
+  console.log(alunno)
+  this.studenteA = alunno;
+  this.openModalee()
+}
+
+clickModificaa(classe: any) {
+  console.log(classe)
+  if(classe != null){
+    this.selectedStudents = [];
+    this.selectedStudents.push(classe)
+
+  }
+  this.openModale()
+}
+
+
+studenteA : any
+studenteB:any = {
+  name: 'nome',
+  surname: 'cognome',
+  classe: 'classe',
+  birthDate: 'data di nascita'
+};
+
+
+openModalee() {
+  this.studenteB = {name: 'nome', surname: 'cognome',classe: 'classe',birthDate: 'data di nascita'}
+  const modal = document.querySelector('#mAC');
+  modal?.classList.add('show');
+  modal?.setAttribute('style', 'display: block');
+}
+
+closeModalee() {
+  const modal = document.querySelector('#mAC');
+  modal?.classList.remove('show');
+  modal?.setAttribute('style', 'display: none');
+  this.modalChiuso()
+}
+
+saveClass() {
+  this.aggiorna();
+  this.closeModalee();
+}
+
+aggiorna(){
+  this.studenteB.birthDate = this.datePipe.transform(this.studenteB.birthDate, 'yyyy-MM-dd HH:mm:ss.SSS');
+  if(this.studenteB.classe != '')
+  this.studenteB.classe = this.prendi.classeToId(this.studenteB.classe)
+
+  this.prendi.updateStudente(this.studenteB, this.prendi.studenteToId(this.studenteA.name, this.studenteA.surname, this.studenteA.classe))
+  this.arr.updateStudenteClasse(this.studenteA, this.studenteB)
+
+
+
+}
+
+
+  filteredArrayy: any[] = []
+  personee: any[] = []
+  ii: any
+  searchQueryy: any
+
+
+
+  openModale() {
+    const modal = document.querySelector('#mEC');
+    modal?.classList.add('show');
+    modal?.setAttribute('style', 'display: block');
+    this.filteredArrayy = this.selectedStudents
+    console.log(this.selectedStudents)
+    this.prendiPersonee()
+  }
+
+  closeModale() {
+    const modal = document.querySelector('#mEC');
+    modal?.classList.remove('show');
+    modal?.setAttribute('style', 'display: none');
+    this.modalChiuso()
+
+  }
+
+
+  elimina(studente: any) {
+
+    studente.birthDate = new Date(studente.birthDate)
+    this.prendi.eliminaStudente(this.prendi.studenteToId(studente.name, studente.surname, studente.classe))
+  }
+
+  deleteStudents(): void {
+    for(let studente of this.selectedStudents){
+      console.log(studente)
+      this.elimina(studente);
+    }
+    this.arr.eliminaStudentiClasse(this.selectedStudents)
+    this.closeModale();
+  }
+
+  performSearchh(): void {
+    this.filteredArrayy = this.selectedStudents
+    this.ii = 0
+    this.filteredArrayy = this.filteredArray.filter(item => {
+      this.ii = this.ii+1
+      return this.personee[this.i - 1].toLowerCase().includes(this.searchQuery.toLowerCase());
+    });
+  }
+
+  prendiPersonee(){
+    for(let persona of this.filteredArray){
+      this.persone.push(persona.name + " " + persona.surname + " " + persona.birthDate)
+    }
+  }
+
 
 }

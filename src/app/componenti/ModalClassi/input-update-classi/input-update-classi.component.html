@@ -1,39 +1,5 @@
 <div class="circle-button">
-  <button type="button" class="btn btn-success btn-update-class" (click)="openModalee()">
-    <i class="bi-arrow-clockwise"></i> Update Class
+  <button type="button" class="btn  btn-update-class" (click)="open()">
+    <i class="bi bi-pencil-square"></i>
   </button>
-</div>
-
-<!-- Modal -->
-<div class="modal" id="uS" tabindex="-1" role="dialog">
-  <div class="modal-dialog centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header  d-flex justify-content-between align-items-start">
-        <h2 class="modal-title">Aggiorna i dati di una classe</h2><button type="button" class="close" (click)="closeModalee()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h3>classe da aggiornare</h3>
-        <div class="form-group">
-          <label for="className">nome classe</label>
-          <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="classeA.name" >
-          <br>
-          <br>
-        </div>
-        <h3>classe aggiornata</h3>
-        <div class="form-group">
-          <label for="className">nome classe aggiornato</label>
-          <br>
-          <input type="text" class="form-control" id="className" [(ngModel)]="classeB.name" >
-          <br>
-          <br>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="saveClass()">Salva</button>
-      </div>
-    </div>
-  </div>
 </div>

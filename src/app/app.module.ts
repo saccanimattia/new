@@ -23,6 +23,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './componenti/home/home.component';
+import { LoginComponent } from './componenti/login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { HomeComponent } from './componenti/home/home.component';
     InputUpdateAllStudentiComponent,
     InputEliminaAllStudentiComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

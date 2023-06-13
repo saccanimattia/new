@@ -6,24 +6,25 @@
       <input type="text" class="form-control" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
     </div>
 
-    <div class="col-lg-2 col-md-3 col-sm-6">
-      <div class="input-row">
-        <app-input-crea-classe (buttonClick)="modalChiuso()"></app-input-crea-classe>
-      </div>
-    </div>
 
     <div class="col-lg-2 col-md-3 col-sm-6">
       <div class="input-row">
-        <app-input-update-classi (buttonClick)="modalChiuso()"></app-input-update-classi>
+
       </div>
     </div>
 
     <div class="col-lg-2 col-md-3 col-sm-6">
       <div *ngIf="selectedClasses.length > 0" >
-        <app-input-elimina-classe [classes]="selectedClasses" (buttonClick)="modalChiuso()"></app-input-elimina-classe>
+        <app-input-elimina-classe (buttonClick)="clickModificaa(null)"></app-input-elimina-classe>
       </div>
     </div>
 
+
+    <div class="col-lg-2 col-md-3 col-sm-6">
+      <div class="input-row">
+        <app-input-crea-classe (buttonClick)="modalChiuso()"></app-input-crea-classe>
+      </div>
+    </div>
 
   </form>
 </div>
@@ -43,6 +44,17 @@
         <th scope="col">
           <span>Classe<i [class]="ord" (click)="ordina()"></i></span>
         </th>
+        <th scope="col">
+
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+
+
       </tr>
     </thead>
     <tbody>
@@ -61,6 +73,25 @@
             </div>
           </label>
         </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <label>
+            <div class="d-flex">
+              <div class="ml-auto">
+                <app-input-update-classi (buttonClick)="clickModifica(classe)"></app-input-update-classi>
+              </div>
+            </div>
+          </label>
+          <label>
+            <div class="d-flex">
+              <div class="ml-auto">
+                <app-input-elimina-classe (buttonClick)="clickModificaa(classe)"></app-input-elimina-classe>
+              </div>
+            </div>
+          </label>
+        </td>
       </tr>
     </tbody>
     <tfoot></tfoot>
@@ -73,3 +104,81 @@
 <div *ngIf="isClasse">
   <app-classe></app-classe>
 </div>
+
+
+<!-- Modal -->
+<div class="modal" id="uS" tabindex="-1" role="dialog">
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header  d-flex justify-content-between align-items-start">
+        <h2 class="modal-title">Aggiorna i dati di una classe</h2><button type="button" class="close" (click)="closeModalee()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="classeSelezionata">
+          <h3>{{ classeSelezionata.name }}</h3>
+          <!-- Altri elementi del template -->
+        </div>
+
+        <div class="form-group">
+          <label for="className">nome classe aggiornato</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="classeB.name" >
+          <br>
+          <br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="saveClass()">Salva</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="d">
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header  d-flex justify-content-between align-items-start">
+        <h2 class="modal-title">Elimina classe/classi</h2><button type="button" class="close" (click)="closeModale()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="search-form">
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control"  [(ngModel)]="searchQueryy" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearchh()" />
+            </div>
+          </form>
+        </div>
+        <div class="table-container">
+        <table class="table student-table">
+          <thead>
+            <tr>
+
+              <th>Nome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let classe of filteredArrayy">
+              <td>{{ classe.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-danger" (click)="deleteClasses()">Conferma</button>
+      </div>
+    </div>
+  </div>
+</div>
+

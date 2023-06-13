@@ -1,53 +1,11 @@
 
 
 <div class="circle-button">
-  <button type="button" class="btn btn-primary btn-danger" (click)="openModale()">
-    <i class="bi bi-dash-circle"></i> Delete Classes
+  <button type="button" class=" btn" (click)="c()">
+    <i class="bi bi-dash-circle"></i>
   </button>
 </div>
 
 
 
 
-
-
-<!-- Modal -->
-<div class="modal" tabindex="-1" role="dialog" id="d">
-  <div class="modal-dialog centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header  d-flex justify-content-between align-items-start">
-        <h2 class="modal-title">Elimina classe/classi</h2><button type="button" class="close" (click)="closeModale()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="search-form">
-          <form class="form-inline">
-            <div class="form-group">
-              <input type="text" class="form-control"  [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearch()" />
-            </div>
-          </form>
-        </div>
-        <div class="table-container">
-        <table class="table student-table">
-          <thead>
-            <tr>
-
-              <th>Nome</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let classe of filteredArray">
-              <td>{{ classe.name }}</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-      <div class="modal-footer">
-
-        <button type="button" class="btn btn-danger" (click)="deleteClasses()">Conferma</button>
-      </div>
-    </div>
-  </div>
-</div>

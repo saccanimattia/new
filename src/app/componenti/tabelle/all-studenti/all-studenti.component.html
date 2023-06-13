@@ -15,13 +15,13 @@
 
       <div class="col-lg-2 col-md-3 col-sm-6">
         <div class="input-row">
-          <app-input-update-all-studenti class="x"  (buttonClick)="modalChiuso()"></app-input-update-all-studenti>
+
         </div>
       </div>
 
       <div class="col-lg-2 col-md-3 col-sm-6">
         <div *ngIf="selectedStudents.length > 0" >
-          <app-input-elimina-all-studenti [students]="selectedStudents" (buttonClick)="modalChiuso()"></app-input-elimina-all-studenti>
+          <app-input-elimina-all-studenti (buttonClick)="clickModificaa(null)"></app-input-elimina-all-studenti>
         </div>
       </div>
 
@@ -46,6 +46,8 @@
             <th >
              Data di nascita<i [class]="ord3" (click)="ordinaDN()"></i></th>
             <th>classe<i [class]="ord4" (click)="ordinaCL()"></i></th>
+            <th></th>
+
           </tr>
           <tbody>
               <tr *ngFor="let alunno of studentiVisualizzati">
@@ -56,6 +58,22 @@
                   <td>{{ alunno.surname }}</td>
                   <td>{{ alunno.birthDate }}</td>
                   <td>{{ alunno.classe }}</td>
+                  <td>
+                    <label>
+                      <div class="d-flex">
+                        <div class="ml-auto">
+                          <app-input-update-all-studenti (buttonClick)="clickModifica(alunno)"></app-input-update-all-studenti>
+                        </div>
+                      </div>
+                    </label>
+                    <label>
+                      <div class="d-flex">
+                        <div class="ml-auto">
+                          <app-input-elimina-all-studenti (buttonClick)="clickModificaa(alunno)"></app-input-elimina-all-studenti>
+                        </div>
+                      </div>
+                    </label>
+                  </td>
               </tr>
           </tbody>
       </table>
@@ -71,4 +89,97 @@
 <ng-template #noStudenti>
   <p class="no-studenti">Non sono presenti studenti</p>
 </ng-template>
+
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="mU">
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header  d-flex justify-content-between align-items-start">
+        <h2 class="modal-title">Aggiorna i dati di uno studente</h2><button type="button" class="close" (click)="closeModalee()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="studenteA">
+          <h3>{{ studenteA.name }} {{ studenteA.surname }} {{ studenteA.classe }} {{ studenteA.birthDate }}</h3>
+          <!-- Altri elementi del template -->
+        </div>
+        <h3>studente aggiornato</h3>
+        <div class="form-group">
+          <label for="className">nome studente aggiornato</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.name" >
+          <br>
+          <label for="className">cognome studente aggiornato</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.surname" >
+          <br>
+          <label for="className">classe studente aggiornata</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.classe" >
+          <br>
+          <label for="className">data nascita studente aggiornata</label>
+          <br>
+          <input type="text" class="form-control" id="className" [(ngModel)]="studenteB.birthDate" >
+          <br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-success" (click)="saveClass()">Salva</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="mE">
+  <div class="modal-dialog centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header  d-flex justify-content-between align-items-start">
+        <h2 class="modal-title">Elimina studenti</h2><button type="button" class="close" (click)="closeModale()">
+          <div class="d">
+            <span aria-hidden="true">&times;</span>
+          </div>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="search-form">
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control"  [(ngModel)]="searchQueryy" [ngModelOptions]="{standalone: true}" placeholder="Cerca" (input)="performSearchh()" />
+            </div>
+          </form>
+        </div>
+        <div class="table-container">
+        <table class="table student-table">
+          <thead>
+            <tr>
+
+              <th>Nome</th>
+              <th>Cognome</th>
+              <th>Data di nascita</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let student of filteredArrayy index as i" >
+              <td>{{ student.name }}</td>
+              <td>{{ student.surname }}</td>
+              <td>{{ student.birthDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-danger" (click)="deleteStudents()"  matTooltip="Info about the action">Conferma</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 

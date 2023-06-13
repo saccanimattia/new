@@ -13,50 +13,12 @@ import { DatePipe } from '@angular/common';
 })
 
 export class InputUpdateAllStudentiComponent {
-  studenteA:any = {
-    name: 'nome',
-    surname: 'cognome',
-    classe: 'classe',
-    birthDate: 'data di nascita'
-  };
 
-  studenteB:any = {
-    name: 'nome',
-    surname: 'cognome',
-    classe: 'classe',
-    birthDate: 'data di nascita'
-  };
 
   @Output() buttonClick = new EventEmitter<void>();
 
 
-
-  constructor(private servizio: PrendiDatiService, private arr : ArrayServiceService, private datePipe : DatePipe) {}
-
-  openModalee() {
-    const modal = document.querySelector('#mU');
-    modal?.classList.add('show');
-    modal?.setAttribute('style', 'display: block');
-  }
-
-  closeModalee() {
-    const modal = document.querySelector('#mU');
-    modal?.classList.remove('show');
-    modal?.setAttribute('style', 'display: none');
+  open(){
     this.buttonClick.emit();
-  }
-
-  saveClass() {
-    this.aggiorna();
-    this.closeModalee();
-  }
-
-  aggiorna(){
-    this.studenteB.birthDate = this.datePipe.transform(this.studenteB.birthDate, 'yyyy-MM-dd HH:mm:ss.SSS');
-    if(this.studenteB.classe != '')
-    this.studenteB.classe = this.servizio.classeToId(this.studenteB.classe)
-    this.servizio.updateStudente(this.studenteB, this.servizio.studenteToId(this.studenteA.name, this.studenteA.surname, this.studenteA.classe))
-    this.arr.updateAllStudenti(this.studenteA, this.studenteB)
-
   }
 }
