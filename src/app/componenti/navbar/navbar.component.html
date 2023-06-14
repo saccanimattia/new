@@ -9,22 +9,101 @@
   </a>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
-    <li>
+    <li *ngIf="isLoggedIn() && isPreside()">
       <a routerLink="/studenti" class="nav-link text-white">
         Studenti
       </a>
     </li>
-    <li>
+    <li *ngIf="isLoggedIn() && isPreside()">
       <a routerLink="/classi" class="nav-link text-white">
         Classi
       </a>
     </li>
+    <li>
+      <div *ngIf="isLoggedIn() && isPreside()">
+        <app-signup (buttonClick)="openModalee()"></app-signup>
+      </div>
+    </li>
+    <li>
+      <div *ngIf="isLoggedIn() && isProfessore()">
+        <p class="nav-link text-white" (click)="visualizza()">
+          classe di {{loggedInUser}}
+        </p>
+      </div>
+    </li>
   </ul>
   <hr>
-  <app-login></app-login>
+  <div *ngIf="!isLoggedIn()">
+    <app-login (buttonClick)="openModale()"></app-login>
+  </div>
+  <div *ngIf="isLoggedIn()" class="logged-in-container">
+    {{ loggedInUser }}
+    <button type="button" class="btn btn-danger" (click)="logout()" *ngIf="isLoggedIn()">Logout</button>
+  </div>
+
 </div>
 
 
 
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="loginModalLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModale()"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="!isLoggedIn()">
+          <div class="mb-3">
+            <label for="usernameInput" class="form-label">Username:</label>
+            <input type="username" class="form-control" id="usernameInput" [(ngModel)]="username" placeholder="Inserisci il tuo username">
+          </div>
+          <div class="mb-3">
+            <label for="passwordInput" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password" placeholder="Inserisci la tua password">
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="login()">Accedi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="signupModalLabel">Crea nuovo professore</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModalee()"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="mb-3">
+            <label for="usernameInput" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="usernameInput" [(ngModel)]="signupUsername" placeholder="username professore">
+          </div>
+          <div class="mb-3">
+            <label for="passwordInput" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="passwordInput" [(ngModel)]="signupPassword" placeholder="password professore">
+          </div>
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="emailInput" [(ngModel)]="signupEmail" placeholder="email professore">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="signup()">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 

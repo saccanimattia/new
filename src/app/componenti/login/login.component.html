@@ -1,16 +1,8 @@
-<h2>Login</h2>
-<div *ngIf="!isLoggedIn()">
-    <label>Email:</label>
-    <input type="username" [(ngModel)]="username" placeholder="Inserisci ll tuo username">
+<div class="circle-button">
+  <button type="button text-white" class="btn" (click)="openL()">
+    <i class="bi bi-box-arrow-in-left text-white"></i>
+    <span class="text-white">Login</span>
+  </button>
 </div>
-<div *ngIf="!isLoggedIn()">
-    <label>Password:</label>
-    <input type="password" [(ngModel)]="password" placeholder="Inserisci la tua password">
-</div>
-<div *ngIf="!isLoggedIn()">
-    <button (click)="login()">Accedi</button>
 
-</div> <button (click)="logout()" *ngIf="isLoggedIn()">Logout</button>
-<div *ngIf="isLoggedIn()">
-    Benvenuto, {{ loggedInUser }}
-</div>
+
